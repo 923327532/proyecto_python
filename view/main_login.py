@@ -25,6 +25,31 @@ class VentanaPrincipal(QWidget):
 
         self.setLayout(layout)
 
+        # --- Estilos BCP ---
+        self.setStyleSheet("""
+            QWidget {
+                background-color: #003366;  /* Azul oscuro BCP */
+                color: white;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 14px;
+            }
+            QPushButton {
+                background-color: #0072CE;  /* Azul BCP */
+                border: none;
+                padding: 10px;
+                border-radius: 6px;
+                color: white;
+                font-weight: bold;
+                transition: background-color 0.3s;
+            }
+            QPushButton:hover {
+                background-color: #005FA3; /* Azul más oscuro al hover */
+            }
+            QPushButton:pressed {
+                background-color: #004A7C; /* Azul aún más oscuro al presionar */
+            }
+        """)
+
     def abrir_login_admin(self):
         self.close()
         self.interfaz_actual = VentanaLogin(self.gestor_usuarios, self.gestor_banco, self.gestor_clientes)
@@ -39,3 +64,4 @@ def ventana_principal(gestor_usuarios, gestor_banco, gestor_clientes):
     ventana = VentanaPrincipal(gestor_usuarios, gestor_banco, gestor_clientes)
     ventana.show()
     return ventana
+

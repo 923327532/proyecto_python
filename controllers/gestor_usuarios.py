@@ -6,8 +6,6 @@ class GestorUsuarios:
     def __init__(self):
         self.colaUsuarios = Cola(10)
         self.contador_usuarios = 1
-
-        # Usuario admin por defecto
         usuario_default = Usuario(f"{self.contador_usuarios:03d}")
         usuario_default.nombre = "Admin General"
         usuario_default.usuario = "admin"
@@ -26,7 +24,6 @@ class GestorUsuarios:
 
         self.colaUsuarios.encolar(usuario)
 
-        # Conexión a la base de datos
         conexion = db.conectar()
         cursor = conexion.cursor()
         cursor.execute(
@@ -42,16 +39,12 @@ class GestorUsuarios:
     def autenticarUsuario(self, datos):
         user = datos["usuario"]
         password = datos["contraseña"]
-
-        # Primero buscamos en la cola (memoria)
         actual = self.colaUsuarios.frente
         while actual:
             u = actual.dato
             if u.usuario == user and u.contraseña == password:
                 return u
             actual = actual.siguiente
-
-        # Si no se encuentra en memoria, buscamos en la base de datos
         conexion = db.conectar()
         cursor = conexion.cursor(dictionary=True)
         cursor.execute("SELECT * FROM usuarios WHERE usuario = %s AND contraseña = %s", (user, password))

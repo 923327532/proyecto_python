@@ -7,19 +7,13 @@ import time
 
 class GestorClientes:
     def __init__(self):
-        # Colas por tipo de cliente
         self.colaDiscapacitados = Cola(5)
         self.colaVIP = Cola(10)
         self.colaNormales = Cola(20)
 
-        # Zonas internas del banco
         self.zonaEspera = Cola(10)
         self.zonaAtencion = Cola(5)
-
-        # Contador de ID para clientes
         self.contador_id = 1
-
-        # Tickets generados por clientes sin login
         self.tickets = []
 
     def recibirCliente(self, tipo):
@@ -40,20 +34,17 @@ class GestorClientes:
 
     def asignarDatosCliente(self, cliente, datos):
         conexion = db.conectar()
-        cursor = conexion.cursor(dictionary=True)  # para recibir resultados como diccionario
+        cursor = conexion.cursor(dictionary=True)  
 
-        # Buscar si cliente ya existe por DNI
         cursor.execute("SELECT * FROM clientes WHERE dni = %s", (datos["dni"],))
         resultado = cursor.fetchone()
 
         if resultado:
-            # Cliente existe: actualizar objeto con datos de BD
             cliente.nombre = resultado["nombre"]
             cliente.dni = resultado["dni"]
             cliente.consulta = resultado["consulta"]
             cliente.tipo = resultado["tipo"]
         else:
-            # Cliente no existe: insertar nuevo
             cliente.nombre = datos["nombre"]
             cliente.dni = datos["dni"]
             cliente.consulta = datos["consulta"]
