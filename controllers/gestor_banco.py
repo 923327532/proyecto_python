@@ -5,7 +5,6 @@ class GestorBanco:
         self.clientes = GestorClientes()
         self.usuarios = GestorUsuarios()
 
-    # ======== CLIENTES ========
     def recibirCliente(self, tipo):
         return self.clientes.recibirCliente(tipo)
 
@@ -24,7 +23,6 @@ class GestorBanco:
     def estadoBanco(self):
         return self.clientes.estadoBanco()
 
-    # ======== USUARIOS (ADMIN / EMPLEADOS) ========
     def registrarUsuario(self, datos):
         return self.usuarios.registrarUsuario(datos)
 
