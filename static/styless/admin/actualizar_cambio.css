@@ -1,0 +1,93 @@
+.tipo-cambio-wrapper {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+}
+
+.tipo-cambio-wrapper h2 {
+  font-size: 28px;
+  color: #004aad;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.mensaje-confirmacion {
+  background-color: #e7f6e7;
+  color: #2e7d32;
+  padding: 15px 20px;
+  border-left: 5px solid #2e7d32;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.tipo-cambio-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  margin: 0 auto 40px auto;
+}
+
+.tipo-cambio-form label {
+  font-weight: bold;
+  color: #004aad;
+  font-size: 15px;
+}
+
+.tipo-cambio-form input {
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1.8px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.tipo-cambio-form input:focus {
+  border-color: #004aad;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 74, 173, 0.2);
+}
+
+.tipo-cambio-form button {
+  background: #004aad;
+  color: white;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.tipo-cambio-form button:hover {
+  background: #0066cc;
+}
+
+/* Botón Volver */
+.botones-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-volver {
+  background: #004aad;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-volver:hover {
+  background: #0066cc;
+}

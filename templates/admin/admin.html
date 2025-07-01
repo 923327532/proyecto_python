@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+{% block title %}Administrador{% endblock %}
+
+{% block header %}
+<div class="header">
+  <div class="header-container">
+    <div class="admin-logo">⚡ Panel Administrativo</div>
+
+    <div class="header-nav">
+      <div class="admin-links">
+        <a href="{{ url_for('admin.ver_solicitudes') }}">Tarjetas</a>
+        <a href="{{ url_for('admin.ver_solicitudes_prestamos') }}">Préstamos</a>
+        <a href="{{ url_for('admin.gestionar_cola') }}"> Gestionar Cola</a>
+        <a href="{{ url_for('admin.actualizar_cambio') }}">Tipo de Cambio</a>
+        <a href="{{ url_for('admin.historial_yape_admin') }}">Yhistorial</a>
+
+
+      </div>
+      <a class="logout-link" href="{{ url_for('logout') }}">Cerrar sesión</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styless/admin/admin.css') }}">
+
+<div class="container">
+  <div class="main-content main-layout">
+
+    <!-- Dashboard Content Aquí -->
+    <div class="dashboard-grid">
+
+      <!-- Tarjetas estadísticas -->
+      <div class="stats-container">
+        <div class="stat-card">
+          <span class="stat-number">{{ cola|length if cola else 0 }}</span>
+          <span class="stat-label">En Cola</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">{{ transferencias|length if transferencias else 0 }}</span>
+          <span class="stat-label">Transferencias</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">{{ pagos|length if pagos else 0 }}</span>
+          <span class="stat-label">Pagos</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">{{ mensajes|length if mensajes else 0 }}</span>
+          <span class="stat-label">Mensajes</span>
+        </div>
+      </div>
+
+      <!-- Cola de atención -->
+      <section class="cola">
+        <h3>Cola de atención</h3>
+        {% if not cola_ocultos %}
+          {% if cola %}
+          <ul>
+            {% for cliente in cola %}
+            <li>{{ cliente }}</li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <div class="empty-state">
+            <div class="empty-icon">👥</div>
+            <p>No hay clientes en cola.</p>
+          </div>
+          {% endif %}
+        {% else %}
+          <div class="hidden-state">
+            <p>Cola oculta temporalmente.</p>
+          </div>
+        {% endif %}
+
+        {% if session['usuario']['perfil'] == 'admin' %}
+          <div class="action-buttons">
+            {% if not cola_ocultos %}
+            <form action="{{ url_for('admin.limpiar_historial') }}" method="POST" class="d-inline" onsubmit="return confirm('¿Seguro que deseas ocultar la cola?');">
+              <input type="hidden" name="tipo" value="cola" />
+              <button type="submit" class="btn btn-warning btn-sm">🧹 Limpiar cola</button>
+            </form>
+            {% else %}
+            <form action="{{ url_for('admin.mostrar_historial') }}" method="POST" class="d-inline">
+              <input type="hidden" name="tipo" value="cola" />
+              <button type="submit" class="btn btn-secondary btn-sm">♻ Restaurar cola</button>
+            </form>
+            {% endif %}
+          </div>
+        {% endif %}
+      </section>
+
+      <!-- Transferencias -->
+      <section class="transferencias">
+        <h3>Transferencias realizadas</h3>
+        {% if not transferencias_ocultos %}
+          {% if transferencias %}
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Remitente</th>
+                  <th>Destinatario</th>
+                  <th>Monto</th>
+                  <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for t in transferencias %}
+                <tr>
+                  <td>{{ t[0] if t[0] is defined else t['remitente'] }}</td>
+                  <td>{{ t[1] if t[1] is defined else t['destinatario'] }}</td>
+                  <td class="balance-amount">S/. {{ t[2] if t[2] is defined else t['monto'] }}</td>
+                  <td>{{ t[3] if t[3] is defined else t['fecha'] }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          {% else %}
+          <div class="empty-state">
+            <div class="empty-icon">💸</div>
+            <p>No hay transferencias registradas.</p>
+          </div>
+          {% endif %}
+        {% else %}
+          <div class="hidden-state">
+            <p>Historial de transferencias oculto.</p>
+          </div>
+        {% endif %}
+
+        {% if session['usuario']['perfil'] == 'admin' %}
+          <div class="action-buttons">
+            {% if not transferencias_ocultos %}
+            <form action="{{ url_for('admin.limpiar_historial') }}" method="POST" class="d-inline" onsubmit="return confirm('¿Estás seguro de que deseas limpiar el historial de transferencias?');">
+              <input type="hidden" name="tipo" value="transferencias" />
+              <button type="submit" class="btn btn-danger btn-sm">🧹 Limpiar historial de transferencias</button>
+            </form>
+            {% else %}
+            <form action="{{ url_for('admin.mostrar_historial') }}" method="POST" class="d-inline">
+              <input type="hidden" name="tipo" value="transferencias" />
+              <button type="submit" class="btn btn-secondary btn-sm">♻ Restaurar historial de transferencias</button>
+            </form>
+            {% endif %}
+          </div>
+        {% endif %}
+      </section>
+
+      <!-- Pagos -->
+      <section class="pagos">
+        <h3>Pagos realizados</h3>
+        {% if not pagos_ocultos %}
+          {% if pagos %}
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Descripción</th>
+                  <th>Monto</th>
+                  <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for p in pagos %}
+                <tr>
+                  <td>{{ p[0] if p[0] is defined else p['usuario'] }}</td>
+                  <td>{{ p[1] if p[1] is defined else p['descripcion'] }}</td>
+                  <td class="balance-amount">S/. {{ p[2] if p[2] is defined else p['monto'] }}</td>
+                  <td>{{ p[3] if p[3] is defined else p['fecha'] }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          {% else %}
+          <div class="empty-state">
+            <div class="empty-icon">💳</div>
+            <p>No hay pagos registrados.</p>
+          </div>
+          {% endif %}
+        {% else %}
+          <div class="hidden-state">
+            <p>Historial de pagos oculto.</p>
+          </div>
+        {% endif %}
+
+        {% if session['usuario']['perfil'] == 'admin' %}
+          <div class="action-buttons">
+            {% if not pagos_ocultos %}
+            <form action="{{ url_for('admin.limpiar_historial') }}" method="POST" class="d-inline" onsubmit="return confirm('¿Estás seguro de que deseas limpiar el historial de pagos?');">
+              <input type="hidden" name="tipo" value="pagos" />
+              <button type="submit" class="btn btn-danger btn-sm">🧹 Limpiar historial de pagos</button>
+            </form>
+            {% else %}
+            <form action="{{ url_for('admin.mostrar_historial') }}" method="POST" class="d-inline">
+              <input type="hidden" name="tipo" value="pagos" />
+              <button type="submit" class="btn btn-secondary btn-sm">♻ Restaurar historial de pagos</button>
+            </form>
+            {% endif %}
+          </div>
+        {% endif %}
+      </section>
+
+      <!-- Mensajes -->
+      <section class="mensajes">
+        <h3>Mensajes de Clientes</h3>
+        {% if not mensajes_ocultos %}
+          {% if mensajes %}
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Cliente</th>
+                  <th>Mensaje</th>
+                  <th>Respuesta</th>
+                  <th>Acción</th>
+                  <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for m in mensajes %}
+                <tr>
+                  <td>{{ m[0] if m[0] is defined else m['id'] }}</td>
+                  <td>{{ m[1] if m[1] is defined else m['usuario'] }}</td>
+                  <td>{{ m[2] if m[2] is defined else m['mensaje'] }}</td>
+                  <td>{{ m[3] if m[3] is defined else m['respuesta'] if m['respuesta'] else 'Sin responder' }}</td>
+                  <td>
+                    {% if not (m[3] if m[3] is defined else m['respuesta']) %}
+                    <form method="post" action="{{ url_for('admin.responder_mensaje', mensaje_id=(m[0] if m[0] is defined else m['id'])) }}">
+                      <input type="text" name="respuesta" placeholder="Escribe tu respuesta" required />
+                      <button type="submit">Responder</button>
+                    </form>
+                    {% else %} 
+                    <span class="responded-indicator">✓ Respondido</span>
+                    {% endif %}
+                  </td>
+                  <td>{{ m[4] if m[4] is defined else m['fecha'] }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          {% else %}
+          <div class="empty-state">
+            <div class="empty-icon">💬</div>
+            <p>No hay mensajes de clientes.</p>
+          </div>
+          {% endif %}
+        {% else %}
+          <div class="hidden-state">
+            <p>Historial de mensajes oculto.</p>
+          </div>
+        {% endif %}
+
+        {% if session['usuario']['perfil'] == 'admin' %}
+          <div class="action-buttons">
+            {% if not mensajes_ocultos %}
+            <form action="{{ url_for('admin.limpiar_historial') }}" method="POST" class="d-inline" onsubmit="return confirm('¿Estás seguro de que deseas limpiar el historial de mensajes?');">
+              <input type="hidden" name="tipo" value="mensajes" />
+              <button type="submit" class="btn btn-warning btn-sm">🧹 Limpiar historial de mensajes</button>
+            </form>
+            {% else %}
+            <form action="{{ url_for('admin.mostrar_historial') }}" method="POST" class="d-inline">
+              <input type="hidden" name="tipo" value="mensajes" />
+              <button type="submit" class="btn btn-secondary btn-sm">♻ Restaurar historial de mensajes</button>
+            </form>
+            {% endif %}
+          </div>
+        {% endif %}
+      </section>
+    </div>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-info">
+      <p>Panel de Administración - Sistema Bancario</p>
+      <p>© 2024 Todos los derechos reservados por grupo tecsup</p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

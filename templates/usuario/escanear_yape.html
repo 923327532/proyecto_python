@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Escanear QR Yape</title>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styless/user/escanear_yape.css') }}">
+
+</head>
+
+<body>
+    <h2>Escanear Código QR</h2>
+
+    <div id="reader" style="width:300px;"></div>
+
+    <form method="POST" id="formQR">
+        <input type="hidden" name="telefono" id="telefonoQR">
+        <label>Monto a enviar (S/):</label><br>
+        <input type="number" step="0.01" name="monto" required><br><br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        function onScanSuccess(decodedText, decodedResult) {
+            document.getElementById("telefonoQR").value = decodedText;
+            document.getElementById("reader").innerHTML = "<p>QR detectado: " + decodedText + "</p>";
+            checkFormReady();
+        }
+
+        const html5QrCode = new Html5Qrcode("reader");
+        html5QrCode.start({ facingMode: "environment" }, {
+            fps: 10,
+            qrbox: 250
+        }, onScanSuccess);
+
+        // Habilitar el botón solo si QR y monto están listos
+        function checkFormReady() {
+            const telefono = document.getElementById("telefonoQR").value;
+            const monto = document.querySelector('input[name="monto"]').value;
+            const btn = document.querySelector('button[type="submit"]');
+            if (telefono && monto) {
+                btn.classList.add('enabled');
+            } else {
+                btn.classList.remove('enabled');
+            }
+        }
+
+        document.querySelector('input[name="monto"]').addEventListener('input', checkFormReady);
+    </script>
+
+    <br>
+    <a href="{{ url_for('yape.enviar_yape') }}">Volver a enviar por número</a>
+
+</body>
+
+</html>

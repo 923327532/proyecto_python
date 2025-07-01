@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambiar Moneda</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styless/user/cambiar_moneda.css') }}">
+</head>
+
+<body>
+  {% extends "base.html" %}
+  {% block content %}
+  
+  <div class="container">
+    
+    <!-- Header Section -->
+    <div class="header-section">
+      <h2>Cambiar Moneda</h2>
+    </div>
+
+    <!-- Main Form Section -->
+    <div class="form-section">
+      <form method="POST">
+        
+        <div class="form-group">
+          <label for="monto">Monto:</label>
+          <div class="input-wrapper">
+            <input type="number" step="0.01" name="monto" id="monto" class="form-input" placeholder="Ingrese el monto" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tipo">Tipo de conversión:</label>
+          <div class="input-wrapper">
+            <select name="tipo" id="tipo" class="form-select" required>
+              <option value="">Seleccione una opción</option>
+              <option value="soles_a_dolares">Soles → Dólares</option>
+              <option value="dolares_a_soles">Dólares → Soles</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-convertir">Convertir</button>
+        
+      </form>
+    </div>
+
+    <!-- Result Section -->
+    {% if resultado %}
+    <div class="result-section">
+      <div class="result-highlight">
+        {{ resultado }}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Summary Section -->
+    <div class="summary-section">
+      <h4 class="summary-title">Resumen de Saldos</h4>
+      
+      <div class="balance-item">
+        <span class="balance-label">Saldo actual en soles:</span>
+        <span class="balance-value">S/ {{ saldo_soles }}</span>
+      </div>
+      
+      <div class="balance-item">
+        <span class="balance-label">Saldo actual en dólares:</span>
+        <span class="balance-value">${{ saldo_dolares }}</span>
+      </div>
+      
+      <div class="exchange-rate">
+        <em>Tasa actual: 1 USD = S/ {{ tasa }}</em>
+      </div>
+      
+    </div>
+
+  </div>
+  
+      <a href="{{ url_for('user.usuario_home') }}" class="btn btn-secondary mt-3">Volver al Panel Usuario</a>
+
+  
+  {% endblock %}
+</body>
+
+</html>

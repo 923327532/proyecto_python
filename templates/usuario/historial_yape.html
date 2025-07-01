@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de Pagos por Yape</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styless/user/historial_yape.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <h2>Historial de Pagos por Yape</h2>
+        </div>
+        
+        <!-- Form Section -->
+        <div class="form-section">
+            <form method="POST" class="filtro-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Tipo:</label>
+                        <select name="filtro_tipo">
+                            <option value="enviados" {% if filtro_tipo == 'enviados' %}selected{% endif %}>Pagos realizados</option>
+                            <option value="recibidos" {% if filtro_tipo == 'recibidos' %}selected{% endif %}>Pagos recibidos</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Desde:</label>
+                        <input type="date" name="fecha_inicio" value="{{ fecha_inicio or '' }}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Hasta:</label>
+                        <input type="date" name="fecha_fin" value="{{ fecha_fin or '' }}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit">Filtrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Table Section -->
+        <div class="table-section">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Remitente</th>
+                            <th>Destinatario</th>
+                            <th>Monto</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for mov in movimientos %}
+                        <tr>
+                            <td>{{ mov[0] }}</td>
+                            <td>{{ mov[1] }}</td>
+                            <td>{{ mov[2] }}</td>
+                            <td>{{ mov[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                        
+                        {% if movimientos|length == 0 %}
+                        <tr>
+                            <td colspan="4" class="mensaje-vacio">No se encontraron resultados en ese rango de fechas.</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

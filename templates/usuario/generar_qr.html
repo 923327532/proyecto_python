@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styless/user/generar_qr.css') }}">
+  <title>Document</title>
+</head>
+<body>
+  {% extends 'base.html' %}
+{% block content %}
+  <h2 class="text-center">Tu código QR de Yape</h2>
+
+  {% if telefono %}
+    <p class="text-center">Este QR contiene tu número registrado: <strong>{{ telefono }}</strong></p>
+
+    <div class="flex justify-center mt-6">
+      <img src="data:image/png;base64,{{ qr_base64 }}" alt="QR Yape" class="rounded shadow-lg">
+    </div>
+  {% else %}
+    <p class="text-center text-red-600">No tienes un número de Yape registrado aún.</p>
+    <div class="text-center mt-4">
+      <a href="{{ url_for('yape.registrar_yape') }}" class="text-blue-600 underline">Registrar número</a>
+    </div>
+  {% endif %}
+{% endblock %}
+
+  
+</body>
+</html>

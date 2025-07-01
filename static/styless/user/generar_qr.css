@@ -1,0 +1,233 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #004aad 0%, #0066cc 20%, #f8f9fa 20%);
+}
+
+/* Header Styles */
+h2 {
+    color: rgb(0, 0, 0);
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h2::before {
+    content: "📱 ";
+    font-size: 36px;
+    margin-right: 10px;
+}
+
+/* Text Center Class */
+.text-center {
+    text-align: center;
+    background: white;
+    border-radius: 16px;
+    padding: 20px 25px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideInUp 0.6s ease-out;
+}
+
+.text-center strong {
+    color: #004aad;
+    font-weight: 700;
+}
+
+/* Flex and justify-center classes */
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.mt-6 {
+    margin-top: 2rem;
+    background: white;
+    border-radius: 16px;
+    padding: 30px 25px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideInUp 0.6s ease-out 0.2s;
+    animation-fill-mode: both;
+}
+
+/* QR Image Styles */
+.rounded {
+    border-radius: 16px;
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.mt-6 img {
+    max-width: 300px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.mt-6 img:hover {
+    transform: scale(1.05);
+}
+
+/* Error Text Styles */
+.text-red-600 {
+    color: #dc3545;
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin: 20px auto;
+    font-weight: 600;
+    text-align: center;
+    animation: slideInUp 0.6s ease-out;
+    max-width: 600px;
+}
+
+.text-red-600::before {
+    content: "⚠️ ";
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+/* Link Styles */
+.text-blue-600 {
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    display: inline-block;
+    padding: 18px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.text-blue-600::before {
+    content: "📝 ";
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+.text-blue-600:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.text-blue-600.underline {
+    text-decoration: none;
+}
+
+/* Container for center content */
+.mt-4 {
+    margin-top: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideInUp 0.6s ease-out 0.4s;
+    animation-fill-mode: both;
+    text-align: center;
+}
+
+/* Animation */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add container wrapper styles */
+body > * {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body > * {
+        padding: 20px 15px;
+    }
+    
+    h2 {
+        font-size: 24px;
+    }
+    
+    .text-center, .mt-6, .mt-4 {
+        padding: 20px 15px;
+        margin: 15px auto;
+    }
+    
+    .mt-6 img {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    h2 {
+        font-size: 20px;
+    }
+    
+    .text-center, .mt-6, .mt-4 {
+        padding: 15px 10px;
+    }
+    
+    .text-blue-600 {
+        padding: 15px 20px;
+        font-size: 14px;
+    }
+
+    .mt-6 img {
+        max-width: 200px;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .text-center, .mt-6, .mt-4 {
+        animation: none;
+    }
+    
+    .text-blue-600:hover, .mt-6 img:hover {
+        transform: none;
+    }
+}
