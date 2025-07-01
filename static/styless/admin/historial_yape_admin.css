@@ -1,0 +1,214 @@
+.solicitudes-wrapper {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 40px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.solicitudes-wrapper h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #004aad;
+  margin-bottom: 15px;
+}
+
+.intro-text {
+  text-align: center;
+  background: #f4f8ff;
+  padding: 15px 25px;
+  border-left: 5px solid #004aad;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Contenedor de filtros con franja naranja */
+.filtro-form {
+  position: relative;
+  background: #f4f8ff;
+  border-radius: 12px;
+  padding: 30px 20px 20px 20px;
+  margin-bottom: 35px;
+  border: 1px solid #d6e4ff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.filtro-form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 8px;
+  width: 100%;
+  background: linear-gradient(90deg, #ff6600, #ff9933); /* Franja naranja BCP degradada */
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.filtro-form .filtro-grupo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.filtro-grupo label {
+  color: #004aad;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.filtro-form select,
+.filtro-form input[type="date"] {
+  padding: 12px 16px;
+  border: 2px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #fff;
+  transition: 0.3s ease;
+}
+
+.filtro-form select:focus,
+.filtro-form input[type="date"]:focus {
+  border-color: #004aad;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 74, 173, 0.2);
+}
+
+.botones-filtro {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.form-group.form-botones {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.botones-filtro button {
+  background: linear-gradient(135deg, #004aad, #0066cc);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.botones-filtro button:hover {
+  background: #0050a5;
+  transform: translateY(-1px);
+}
+
+/* Tabla */
+.tabla-solicitudes {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  margin-top: 15px;
+}
+
+.tabla-solicitudes th {
+  background: #004aad;
+  color: white;
+  padding: 14px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.tabla-solicitudes td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  font-size: 15px;
+}
+
+.tabla-solicitudes td:nth-child(3) {
+  font-weight: bold;
+  color: #28a745;
+}
+
+.tabla-solicitudes td:nth-child(1),
+.tabla-solicitudes td:nth-child(2) {
+  color: #004aad;
+  font-weight: 500;
+}
+
+.tabla-solicitudes td:nth-child(4) {
+  color: #666;
+  font-family: 'Courier New', monospace;
+}
+
+/* Sin resultados */
+.mensaje-vacio {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 30px;
+  font-size: 16px;
+}
+
+/* Botón Volver */
+.botones-footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn-volver {
+  background: #004aad;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-volver:hover {
+  background: #0066cc;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 150px;
+}
+
+.form-botones button,
+.btn-exportar {
+    background: linear-gradient(135deg, #004aad, #007bff);
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.form-botones button:hover,
+.btn-exportar:hover {
+    background: #0056b3;
+    transform: translateY(-1px);
+}

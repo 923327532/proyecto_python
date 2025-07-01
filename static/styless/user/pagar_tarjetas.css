@@ -1,0 +1,280 @@
+ /* Reset and Base Styles */
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ body {
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     background-color: #f8f9fa;
+     color: #333;
+     line-height: 1.6;
+     min-height: 100vh;
+     background: linear-gradient(135deg, #004aad 0%, #0066cc 20%, #f8f9fa 20%);
+ }
+
+ .container {
+     max-width: 900px;
+     margin: 0 auto;
+     padding: 40px 20px;
+ }
+
+ /* Header Section */
+ h2 {
+     color: rgb(0, 0, 0);
+     font-size: 32px;
+     font-weight: 300;
+     margin-bottom: 30px;
+     text-align: center;
+     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+ }
+
+ /* Form Section */
+ form {
+     background: white;
+     border-radius: 16px;
+     padding: 40px;
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+     margin-bottom: 40px;
+     border: 1px solid rgba(255, 255, 255, 0.2);
+     animation: slideInUp 0.6s ease-out;
+ }
+
+ form::before {
+     content: "💳";
+     display: block;
+     font-size: 48px;
+     text-align: center;
+     margin-bottom: 20px;
+     opacity: 0.7;
+ }
+
+ /* Form Labels */
+ form label {
+     display: block;
+     font-weight: 600;
+     color: #004aad;
+     margin-bottom: 8px;
+     font-size: 16px;
+ }
+
+ /* Select Dropdown */
+ select[name="tipo_tarjeta"] {
+     width: 100%;
+     padding: 16px 20px;
+     border: 2px solid #e0e0e0;
+     border-radius: 12px;
+     font-size: 16px;
+     margin-bottom: 25px;
+     transition: all 0.3s ease;
+     background-color: #fafafa;
+     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+     background-repeat: no-repeat;
+     background-position: right 15px center;
+     background-size: 20px;
+     appearance: none;
+     cursor: pointer;
+ }
+
+ select[name="tipo_tarjeta"]:focus {
+     outline: none;
+     border-color: #004aad;
+     background-color: white;
+     box-shadow: 0 0 0 3px rgba(0, 74, 173, 0.1);
+     transform: translateY(-2px);
+ }
+
+ select[name="tipo_tarjeta"]:hover {
+     border-color: #0066cc;
+     background-color: white;
+ }
+
+ /* Styling for different card types */
+ select[name="tipo_tarjeta"] option[value="oro"] {
+     background-color: #ffd700;
+     color: #333;
+ }
+
+ select[name="tipo_tarjeta"] option[value="plata"] {
+     background-color: #c0c0c0;
+     color: #333;
+ }
+
+ select[name="tipo_tarjeta"] option[value="platinum"] {
+     background-color: #e5e4e2;
+     color: #333;
+ }
+
+ /* Input Number */
+ input[type="number"] {
+     width: 100%;
+     padding: 16px 20px;
+     border: 2px solid #e0e0e0;
+     border-radius: 12px;
+     font-size: 16px;
+     margin-bottom: 25px;
+     transition: all 0.3s ease;
+     background-color: #fafafa;
+     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E");
+     background-repeat: no-repeat;
+     background-position: right 15px center;
+     background-size: 20px;
+     padding-right: 50px;
+ }
+
+ input[type="number"]:focus {
+     outline: none;
+     border-color: #004aad;
+     background-color: white;
+     box-shadow: 0 0 0 3px rgba(0, 74, 173, 0.1);
+     transform: translateY(-2px);
+ }
+
+ input[type="number"]:hover {
+     border-color: #0066cc;
+     background-color: white;
+ }
+
+ /* Submit Button */
+ button[type="submit"] {
+     background: linear-gradient(135deg, #004aad 0%, #0066cc 100%);
+     color: white;
+     border: none;
+     padding: 16px 40px;
+     border-radius: 12px;
+     font-size: 18px;
+     font-weight: 600;
+     cursor: pointer;
+     width: 100%;
+     transition: all 0.3s ease;
+     box-shadow: 0 4px 16px rgba(0, 74, 173, 0.3);
+     text-transform: uppercase;
+     letter-spacing: 0.5px;
+     position: relative;
+     overflow: hidden;
+ }
+
+ button[type="submit"]:hover {
+     transform: translateY(-2px);
+     box-shadow: 0 8px 24px rgba(0, 74, 173, 0.4);
+     background: linear-gradient(135deg, #003a8c 0%, #0052a3 100%);
+ }
+
+ button[type="submit"]:active {
+     transform: translateY(0);
+     box-shadow: 0 4px 16px rgba(0, 74, 173, 0.3);
+ }
+
+ button[type="submit"]::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: -100%;
+     width: 100%;
+     height: 100%;
+     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+     transition: left 0.5s;
+ }
+
+ button[type="submit"]:hover::before {
+     left: 100%;
+ }
+
+ /* Message Styles */
+ .message {
+     padding: 12px 20px;
+     border-radius: 8px;
+     margin: 20px 0;
+     font-weight: 500;
+     border-left: 4px solid;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+     background-color: #d4edda;
+     color: #155724;
+     border-left-color: #28a745;
+     animation: slideInUp 0.6s ease-out;
+ }
+
+ /* Animation for form appearance */
+ @keyframes slideInUp {
+     from {
+         opacity: 0;
+         transform: translateY(30px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ /* Responsive Design */
+ @media (max-width: 768px) {
+     .container {
+         padding: 20px 15px;
+     }
+
+     form {
+         padding: 30px 20px;
+     }
+
+     h2 {
+         font-size: 24px;
+     }
+
+     select[name="tipo_tarjeta"],
+     input[type="number"] {
+         padding: 14px 16px;
+         font-size: 16px;
+     }
+
+     button[type="submit"] {
+         padding: 14px 30px;
+         font-size: 16px;
+     }
+ }
+
+ @media (max-width: 576px) {
+     form {
+         padding: 20px 15px;
+     }
+
+     h2 {
+         font-size: 20px;
+     }
+ }
+
+ /* Loading state for submit button */
+ button[type="submit"]:disabled {
+     background: #ccc;
+     cursor: not-allowed;
+     transform: none;
+     box-shadow: none;
+ }
+
+ /* Secondary Button */
+ .btn-secondary {
+     background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+     color: white;
+     text-decoration: none;
+     padding: 14px 30px;
+     border-radius: 12px;
+     font-weight: 600;
+     display: inline-flex;
+     align-items: center;
+     gap: 10px;
+     transition: all 0.3s ease;
+     box-shadow: 0 4px 16px rgba(108, 117, 125, 0.3);
+     text-transform: uppercase;
+     letter-spacing: 0.5px;
+     font-size: 14px;
+     border: none;
+ }
+
+ .btn-secondary:hover {
+     transform: translateY(-2px);
+     box-shadow: 0 8px 24px rgba(108, 117, 125, 0.4);
+     background: linear-gradient(135deg, #5a6268 0%, #343a40 100%);
+     color: white;
+     text-decoration: none;
+ }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Solicitar Tarjeta</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styless/user/solicitar_tarjeta.css') }}">
+  </head>
+  <body>
+    <h1>Solicitud de Tarjeta</h1>
+
+    <form method="POST" action="{{ url_for('user.solicitar_tarjeta') }}">
+      <label for="sueldo">Ingrese su sueldo mensual:</label><br />
+      <input
+        type="number"
+        name="sueldo"
+        id="sueldo"
+        required
+        min="0"
+        step="0.01"
+      /><br /><br />
+
+      <label for="tarjeta_solicitada">Tipo de tarjeta:</label><br />
+      <select name="tarjeta_solicitada" id="tarjeta_solicitada" required>
+        <option value="">Seleccione una tarjeta</option>
+        <option value="Clásica">Clásica</option>
+        <option value="Oro">Oro</option>
+        <option value="Platino">Platino</option></select
+      ><br /><br />
+
+      <button type="submit">Solicitar Tarjeta</button>
+    </form>
+
+    <h2>Mis Solicitudes de Tarjeta</h2>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Sueldo</th>
+        <th>Tarjeta Solicitada</th>
+        <th>Estado</th>
+        <th>Fecha de Solicitud</th>
+        <th>Acción</th>
+      </tr>
+      {% for solicitud in mis_solicitudes %}
+      <tr>
+        <td>{{ solicitud.id }}</td>
+        <td>{{ solicitud.usuario }}</td>
+        <td>{{ solicitud.sueldo }}</td>
+        <td>{{ solicitud.tarjeta_solicitada }}</td>
+        <td>{{ solicitud.estado }}</td>
+        <td>{{ solicitud.fecha_solicitud }}</td>
+        <td>
+          {% if solicitud.estado == 'Pendiente' %}
+          <form
+            method="POST"
+            action="{{ url_for('user.cancelar_solicitud', id=solicitud.id) }}"
+          >
+            <button type="submit">Cancelar</button>
+          </form>
+          {% else %} - {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <p>
+    <a href="{{ url_for('user.usuario_home') }}" class="btn btn-secondary mt-3">Volver al Panel Usuario</a>
+    </p>
+  </body>
+</html>

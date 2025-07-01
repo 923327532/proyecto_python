@@ -1,0 +1,131 @@
+.prestamos-wrapper {
+  max-width: 1240px;
+  margin: 60px auto;
+  padding: 50px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 17px;
+}
+
+.titulo-principal {
+  font-size: 38px;
+  color: #004aad;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.mensaje-bienvenida {
+  font-size: 20px;
+  color: #333;
+  background: #e8f1ff;
+  padding: 25px;
+  border-left: 6px solid #004aad;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 35px;
+  line-height: 1.6;
+}
+
+.tabla-prestamos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 17px;
+  margin-bottom: 35px;
+}
+
+.tabla-prestamos th {
+  background: #004aad;
+  color: white;
+  padding: 16px 12px;
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+.tabla-prestamos td {
+  padding: 16px 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-size: 16px;
+}
+
+.estado.aprobado {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.estado.rechazado {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.estado.pendiente {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 15px;
+  text-decoration: none;
+  color: white;
+  margin: 2px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn.aprobar {
+  background: #28a745;
+}
+
+.btn.rechazar {
+  background: #dc3545;
+}
+
+.btn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+/* Botón inferior */
+.botones-footer {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.btn-volver {
+  background: #004aad;
+  color: white;
+  padding: 14px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.btn-volver:hover {
+  background: #0066cc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Encabezado tipo banco */
+.encabezado-banco {
+  background: linear-gradient(135deg, #004aad, #0066cc);
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contenedor-encabezado h1 {
+  font-size: 30px;
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+

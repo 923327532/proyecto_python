@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styless/admin/gestionar_cola.css') }}">
+
+<div class="cola-wrapper">
+    <h2>Clientes en Cola</h2>
+
+    <p class="intro-text">
+        Aquí puedes visualizar los clientes que están esperando ser atendidos. <br>
+        Despacha al primer cliente de la lista para avanzar en la cola.
+    </p>
+
+    {% if clientes %}
+        <ul class="lista-clientes">
+            {% for c in clientes %}
+                <li>{{ c }}</li>
+            {% endfor %}
+        </ul>
+
+        <form action="{{ url_for('admin.despachar_cliente') }}" method="get" class="form-despachar">
+            <button type="submit" class="btn-despachar">Despachar Primer Cliente</button>
+        </form>
+    {% else %}
+        <div class="sin-clientes">
+            <p>No hay clientes en la cola en este momento.</p>
+            <img src="{{ url_for('static', filename='image/espera.png') }}" alt="Sin clientes" class="img-vacia">
+        </div>
+    {% endif %}
+
+    <div class="botones-footer">
+        <a href="{{ url_for('admin.admin_home') }}" class="btn-volver">← Volver al Panel</a>
+    </div>
+</div>
+{% endblock %}

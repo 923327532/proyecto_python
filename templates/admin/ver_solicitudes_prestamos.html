@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Solicitudes de Préstamos{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styless/admin/ver_solicitudes_prestamos.css') }}">
+
+<div class="prestamos-wrapper">
+  <h1 class="titulo-principal">📄 Solicitudes de Préstamos</h1>
+
+  <p class="mensaje-bienvenida">
+    Aquí puedes revisar todas las solicitudes de préstamos realizadas por los usuarios.<br>
+    Revisa los detalles y toma una decisión informada.
+  </p>
+
+  <table class="tabla-prestamos">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Monto</th>
+        <th>Meses</th>
+        <th>Interés</th>
+        <th>Cuota</th>
+        <th>Estado</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for prestamo in prestamos %}
+        <tr>
+          <td>{{ prestamo.id }}</td>
+          <td>{{ prestamo.usuario }}</td>
+          <td>{{ prestamo.monto }}</td>
+          <td>{{ prestamo.meses }}</td>
+          <td>{{ prestamo.interes }}</td>
+          <td>{{ prestamo.cuota }}</td>
+          <td class="estado {{ prestamo.estado | lower }}">{{ prestamo.estado }}</td>
+          <td>{{ prestamo.fecha }}</td>
+          <td>
+            {% if prestamo.estado == 'Pendiente' %}
+              <a href="{{ url_for('admin.aprobar_prestamo', id=prestamo.id) }}" class="btn aprobar">Aprobar</a>
+              <a href="{{ url_for('admin.rechazar_prestamo', id=prestamo.id) }}" class="btn rechazar">Rechazar</a>
+            {% else %}
+              {{ prestamo.estado }}
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="botones-footer">
+    <a href="{{ url_for('admin.admin_home') }}" class="btn-volver">← Volver al Panel</a>
+  </div>
+</div>
+{% endblock %}

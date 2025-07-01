@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar Yape</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styless/user/registrar_yape.css') }}">
+</head>
+<body>
+  {% extends 'base.html' %} 
+  {% block content %}
+
+  <div class="container">
+    
+    <!-- Success Section -->
+    {% if exito %}
+    <div class="success-section">
+      <div class="success-card">
+        <div class="success-icon">✅</div>
+        <h2 class="success-title">Número Yape registrado con éxito</h2>
+        <p class="success-message">¡Vive la experiencia de Yape! 🎉</p>
+        <div class="success-actions">
+          <a href="{{ url_for('user.usuario_home') }}" class="btn-volver">
+            Volver al inicio
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    {% else %}
+    
+    <!-- Header Section -->
+    <div class="header-section">
+      <h2>Registrar número Yape</h2>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section">
+      <form method="POST" class="registro-form">
+        <div class="form-group">
+          <label for="telefono">Número de celular</label>
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="telefono"
+              name="telefono"
+              placeholder="Ingresa tu número de celular"
+              maxlength="9"
+              required
+              class="phone-input"
+            />
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="btn-registrar">
+            Registrar Yape
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Messages Section -->
+    <div class="messages-section">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="flash-message flash-{{ category }}">
+              <span class="message-icon">
+                {% if category == 'error' %}⚠️{% else %}✅{% endif %}
+              </span>
+              <span class="message-text">{{ message }}</span>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+    
+    {% endif %}
+    
+  </div>
+
+  {% endblock %}
+</body>
+</html>

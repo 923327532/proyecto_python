@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Realizar Transferencia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styless/user/realizar_transferencia.css') }}">
+</head>
+<body>
+    <h1>Transferencia de Dinero</h1>
+
+    <form method="POST">
+        <label for="cuenta_destino">Número de cuenta del destinatario:</label>
+        <input type="text" name="cuenta_destino" value="{{ cuenta_destino or '' }}" required><br><br>
+
+        {% if usuario_destinatario %}
+            <p><strong>Destinatario:</strong> {{ usuario_destinatario }}</p>
+        {% endif %}
+
+        <label for="monto">Monto a transferir:</label>
+        <input type="number" step="0.01" name="monto" value="{{ monto or '' }}" required><br><br>
+
+        {% if usuario_destinatario and not request.form.get('confirmar') %}
+            <!-- Segundo paso: ya se mostró el nombre del destinatario -->
+            <input type="hidden" name="confirmar" value="si">
+            <button type="submit">Confirmar Transferencia</button>
+        {% else %}
+            <!-- Primer paso: solo se va a buscar al destinatario -->
+            <button type="submit">Verificar Destinatario</button>
+        {% endif %}
+    </form>
+
+    <!-- Mostrar mensajes -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    <h2>Historial de Transferencias</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Destinatario</th>
+                <th>Monto</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in historial %}
+                <tr>
+                    <td>{{ t[0] }}</td>
+                    <td>{{ t[1] }}</td>
+                    <td>{{ t[2] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{{ url_for('user.usuario_home') }}" class="btn btn-secondary mt-3">Volver al Panel Usuario</a>
+</body>
+</html>

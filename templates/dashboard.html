@@ -1,0 +1,18 @@
+{% extends "base/base.html" %}
+
+{% block title %}Panel del Cliente{% endblock %}
+
+{% block content %}
+<section>
+  <h2>Hola, {{ nombre }}</h2>
+  <p>Saldo actual: S/. {{ saldo }}</p>
+</section>
+
+<section>
+  <a href="{{ url_for('cliente.mensajes') }}">Ver mensajes</a><br>
+  <a href="{{ url_for('cliente.enviar_mensaje') }}">Enviar mensaje</a><br>
+  <a href="{{ url_for('cliente.pagos') }}">Ver pagos</a><br>
+  <a href="{{ url_for('cliente.solicitar_tarjeta') }}">Solicitar tarjeta</a><br>
+  <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+</section>
+{% endblock %}

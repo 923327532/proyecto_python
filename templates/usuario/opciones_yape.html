@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styless/user/opciones_yape.css') }}">
+  <title>Opciones Yape</title>
+</head>
+<body>
+
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <h2>Opciones Yape</h2>
+    <img class="image-yape" src="{{ url_for('static', filename='image/yape.avif') }}">
+    
+    <!-- Phone info section -->
+    <div class="phone-info {% if not telefono or telefono == 'No registrado' %}unregistered{% endif %}">
+      Tu número registrado: {{ telefono or 'No registrado' }}
+    </div>
+
+    <!-- Options grid -->
+    <div class="options-grid">
+      <a href="{{ url_for('yape.enviar_yape') }}" class="option-card yapear">
+        Yapear a celular
+      </a>
+      
+      <a href="{{ url_for('yape.generar_qr') }}" class="option-card generar-qr">
+        Generar código QR
+      </a>
+      
+      <a href="{{ url_for('yape.escanear_qr') }}" class="option-card escanear-qr">
+        Escanear QR
+      </a>
+      
+      <a href="{{ url_for('yape.registrar_yape') }}" class="option-card registrar">
+        Registrar número Yape
+      </a>
+      
+      <a href="{{ url_for('yape.historial_yape') }}" class="option-card historial">
+        Ver historial
+      </a>
+    </div>
+  </div>
+{% endblock %}
+
+</body>
+</html>
