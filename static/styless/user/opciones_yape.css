@@ -1,0 +1,304 @@
+ /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #004aad 0%, #0066cc 20%, #f8f9fa 20%);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header Section */
+        h2 {
+            color: rgb(0, 0, 0);
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Phone number display */
+        .phone-info {
+            text-align: center;
+            font-size: 18px;
+            color: #004aad;
+            margin-bottom: 40px;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #004aad;
+            font-weight: 500;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        .phone-info::before {
+            content: "📱 ";
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        /* Grid Container */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        /* Option Cards */
+        .option-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px 25px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: slideInUp 0.6s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        /* Image styling */
+.image-yape {
+    display: block;
+    margin: 0 auto 30px auto;
+    max-width: 150px;
+    height: auto;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    animation: slideInUp 0.5s ease-out;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    object-fit: cover;
+}
+
+.image-yape:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 1);
+}
+
+/* Responsive design for image */
+@media (max-width: 768px) {
+    .image-yape {
+        max-width: 120px;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .image-yape {
+        max-width: 100px;
+        margin-bottom: 20px;
+    }
+}
+
+        /* Individual card colors and icons */
+        .option-card.yapear {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        }
+
+        .option-card.yapear::before {
+            content: "💸";
+            font-size: 48px;
+            display: block;
+        }
+
+        .option-card.generar-qr {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+
+        .option-card.generar-qr::before {
+            content: "📋";
+            font-size: 48px;
+            display: block;
+        }
+
+        .option-card.escanear-qr {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+        }
+
+        .option-card.escanear-qr::before {
+            content: "📷";
+            font-size: 48px;
+            display: block;
+        }
+
+        .option-card.registrar {
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+        }
+
+        .option-card.registrar::before {
+            content: "📝";
+            font-size: 48px;
+            display: block;
+        }
+
+        .option-card.historial {
+            background: linear-gradient(135deg, #be185d 0%, #9d174d 100%);
+        }
+
+        .option-card.historial::before {
+            content: "📊";
+            font-size: 48px;
+            display: block;
+        }
+
+        /* Hover effects */
+        .option-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .option-card.yapear:hover {
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+        }
+
+        .option-card.generar-qr:hover {
+            background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+        }
+
+        .option-card.escanear-qr:hover {
+            background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+        }
+
+        .option-card.registrar:hover {
+            background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+        }
+
+        .option-card.historial:hover {
+            background: linear-gradient(135deg, #9d174d 0%, #831843 100%);
+        }
+
+        /* Shine effect on hover */
+        .option-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .option-card:hover::after {
+            left: 100%;
+        }
+
+        /* Active state */
+        .option-card:active {
+            transform: translateY(-4px);
+        }
+
+        /* Animation delays for staggered effect */
+        .option-card:nth-child(1) { animation-delay: 0.1s; animation-fill-mode: both; }
+        .option-card:nth-child(2) { animation-delay: 0.2s; animation-fill-mode: both; }
+        .option-card:nth-child(3) { animation-delay: 0.3s; animation-fill-mode: both; }
+        .option-card:nth-child(4) { animation-delay: 0.4s; animation-fill-mode: both; }
+        .option-card:nth-child(5) { animation-delay: 0.5s; animation-fill-mode: both; }
+
+        /* Animation for appearance */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .option-card {
+                padding: 25px 20px;
+                font-size: 16px;
+            }
+            
+            .phone-info {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h2 {
+                font-size: 20px;
+            }
+            
+            .option-card {
+                padding: 20px 15px;
+                font-size: 14px;
+            }
+            
+            .option-card::before {
+                font-size: 36px !important;
+            }
+        }
+
+        /* Loading states */
+        .option-card:focus {
+            outline: 3px solid rgba(255, 255, 255, 0.5);
+            outline-offset: 2px;
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            .option-card {
+                animation: none;
+            }
+            
+            .option-card:hover {
+                transform: none;
+            }
+        }
+
+        /* Special styling for unregistered phone */
+        .phone-info.unregistered {
+            color: #dc3545;
+            border-left-color: #dc3545;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
+        }
+
+        .phone-info.unregistered::before {
+            content: "⚠️ ";
+        }

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Solicitudes de Tarjetas{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styless/admin/ver_solicitudes.css') }}">
+
+  <div class="solicitudes-wrapper">
+    <h2>📋 Solicitudes de Tarjetas</h2>
+
+    <p class="intro-text">
+      A continuación se muestran las solicitudes de tarjetas registradas. Puedes aprobar o rechazar aquellas que se encuentren en estado <strong>pendiente</strong>.
+    </p>
+
+    <table class="tabla-solicitudes">
+      <thead>
+        <tr>
+          <th>👤 Usuario</th>
+          <th>💰 Sueldo</th>
+          <th>💳 Tarjeta</th>
+          <th>📌 Estado</th>
+          <th>⚙ Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in solicitudes %}
+        <tr>
+          <td>{{ s.usuario }}</td>
+          <td>S/ {{ s.sueldo }}</td>
+          <td>{{ s.tarjeta_solicitada }}</td>
+          <td class="estado {% if s.estado.lower() == 'aprobado' %}aprobado{% elif s.estado.lower() == 'rechazado' %}rechazado{% else %}pendiente{% endif %}">
+            {{ s.estado | capitalize }}
+          </td>
+          <td>
+            {% if s.estado.lower() == 'pendiente' %}
+              <a href="{{ url_for('admin.actualizar_solicitud', solicitud_id=s.id, accion='aprobar') }}" class="btn aprobar">✅ Aprobar</a>
+              <a href="{{ url_for('admin.actualizar_solicitud', solicitud_id=s.id, accion='rechazar') }}" class="btn rechazar">❌ Rechazar</a>
+            {% else %}
+              <span class="texto-fijo">Estado finalizado</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="botones-footer">
+      <a href="{{ url_for('admin.admin_home') }}" class="btn-volver">← Volver al Panel</a>
+    </div>
+  </div>
+{% endblock %}

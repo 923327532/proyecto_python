@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Historial de Yape - Admin{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styless/admin/historial_yape_admin.css') }}">
+<div class="solicitudes-wrapper">
+  <h2>Historial de Pagos por Yape</h2>
+
+  <p class="intro-text">
+    Esta sección muestra todos los pagos realizados y recibidos a través de Yape.<br>
+    Puedes filtrar por tipo de operación o por fecha, y exportar los datos a Excel.
+  </p>
+
+  <form method="POST" class="filtro-form">
+    <select name="filtro_tipo">
+      <option value="todos">Todos</option>
+      <option value="enviados">Pagos realizados</option>
+      <option value="recibidos">Pagos recibidos</option>
+    </select>
+
+    <input type="date" name="fecha_inicio">
+    <input type="date" name="fecha_fin">
+
+    <button type="submit">Filtrar</button>
+    <button type="submit" name="exportar" value="excel">Exportar a Excel</button>
+  </form>
+
+  <table class="tabla-solicitudes">
+    <thead>
+      <tr>
+        <th>Remitente</th>
+        <th>Destinatario</th>
+        <th>Monto (S/)</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in movimientos %}
+        <tr>
+          <td>{{ m[0] }}</td>
+          <td>{{ m[1] }}</td>
+          <td>{{ "%.2f"|format(m[2]) }}</td>
+          <td>{{ m[3] }}</td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="4" class="mensaje-vacio">No se encontraron resultados.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="botones-footer">
+    <a href="{{ url_for('admin.admin_home') }}" class="btn-volver">← Volver al Panel</a>
+  </div>
+</div>
+
+{% endblock %}

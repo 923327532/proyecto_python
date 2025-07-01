@@ -1,0 +1,660 @@
+/* Reset y Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #004aad 0%, #0066cc 100%);
+    color: white;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bcp-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Welcome Section */
+.welcome-section {
+    background: linear-gradient(135deg, #004aad 0%, #0066cc 100%);
+    padding: 30px 0 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.welcome-content {
+    flex: 1;
+}
+
+.last-session {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.welcome-title {
+    font-size: 36px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.welcome-illustration {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    height: 150px;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+.welcome-illustration img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Main Content */
+.main-content {
+    margin-top: -30px;
+    position: relative;
+    z-index: 1;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Left Column */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Quick Actions */
+.quick-actions {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 20px;
+    color: #004aad;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.action-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.action-item:hover {
+    background-color: #f0f7ff;
+    border-color: #004aad;
+    transform: translateY(-2px);
+}
+
+.action-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.transfer-icon { background-color: #e3f2fd; }
+.mobile-icon { background-color: #f3e5f5; }
+.card-icon { background-color: #e8f5e8; }
+.services-icon { background-color: #fff3e0; }
+
+.action-text {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* Promotional Cards */
+.promo-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.promo-card:hover {
+    transform: translateY(-2px);
+}
+
+.promo-card a {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.exchange-card { border-left: 4px solid #ffc107; }
+.business-card { border-left: 4px solid #17a2b8; }
+.international-card { border-left: 4px solid #28a745; }
+.insurance-card { border-left: 4px solid #6f42c1; }
+
+.promo-content h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.promo-content p {
+    font-size: 14px;
+    color: #666;
+}
+
+.promo-icon {
+    font-size: 30px;
+    opacity: 0.7;
+}
+
+/* Quick Links - Después de promo cards */
+.quick-links {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quick-link {
+    display: block;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: #004aad;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s;
+    font-weight: 500;
+    text-align: center;
+    font-size: 14px;
+}
+
+.quick-link:hover {
+    border-color: #004aad;
+    background-color: #f0f7ff;
+}
+
+.quick-link.logout {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.quick-link.logout:hover {
+    background-color: #f8d7da;
+}
+
+/* Right Column */
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Account Section */
+.account-section {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.account-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.account-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.account-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #004aad;
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.account-details h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.account-number {
+    font-size: 14px;
+    color: #666;
+}
+
+.account-balance {
+    text-align: right;
+}
+
+.balance-amount {
+    font-size: 24px;
+    font-weight: 700;
+    color: #004aad;
+    display: block;
+}
+
+.balance-label {
+    font-size: 12px;
+    color: #666;
+}
+
+.cuenta-box {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.cuenta-box h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.cuenta-box p {
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    word-break: break-all;
+}
+
+.copy-btn {
+    background-color: #004aad;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.copy-btn:hover {
+    background-color: #003a8c;
+}
+
+/* Additional Sections */
+.additional-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.transfers-section,
+.messages-section {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.transfers-section h3,
+.messages-section h3 {
+    color: #004aad;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.transfers-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.transfer-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.transfer-item:last-child {
+    border-bottom: none;
+}
+
+.transfer-amount {
+    font-weight: 600;
+    color: #28a745;
+    min-width: 80px;
+}
+
+.transfer-from {
+    flex: 1;
+    margin: 0 15px;
+    font-size: 14px;
+}
+
+.transfer-date {
+    font-size: 12px;
+    color: #666;
+    min-width: 80px;
+    text-align: right;
+}
+
+.empty-state {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Message Form */
+.message-form {
+    margin-bottom: 30px;
+}
+
+.message-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+    margin-bottom: 10px;
+    min-height: 100px;
+}
+
+.message-form textarea:focus {
+    outline: none;
+    border-color: #004aad;
+}
+
+.submit-btn {
+    background-color: #004aad;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #003a8c;
+}
+
+/* Messages Table */
+.messages-table {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 100px;
+    gap: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    font-weight: 600;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 14px;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 100px;
+    gap: 15px;
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 13px;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+/* Footer */
+.footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-info {
+    text-align: right;
+}
+
+.footer-info p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .header-container {
+        padding: 15px;
+    }
+    
+    .welcome-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .welcome-title {
+        font-size: 28px;
+    }
+    
+    .welcome-illustration {
+        position: static;
+        transform: none;
+        width: 150px;
+        height: 120px;
+        margin: 0 auto;
+        opacity: 1;
+    }
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .account-card {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .account-balance {
+        text-align: center;
+    }
+    
+    .table-header,
+    .table-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        font-size: 12px;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .footer-info {
+        text-align: center;
+    }
+    
+    .quick-actions,
+    .account-section,
+    .transfers-section,
+    .messages-section,
+    .quick-links {
+        padding: 20px;
+    }
+    
+    .promo-card {
+        padding: 15px;
+    }
+    
+    .transfer-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .transfer-amount,
+    .transfer-date {
+        min-width: auto;
+    }
+    
+    .transfer-date {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-title {
+        font-size: 24px;
+    }
+    
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-item {
+        padding: 15px;
+    }
+    
+    .balance-amount {
+        font-size: 20px;
+    }
+    
+    .cuenta-box p {
+        font-size: 14px;
+    }
+    
+    .promo-content h3 {
+        font-size: 14px;
+    }
+    
+    .quick-link {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
