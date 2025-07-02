@@ -1,6 +1,6 @@
-# 💳 Simulador Bancario - Plataforma de Operaciones Financieras
+# Simulador Bancario - Plataforma de Operaciones Financieras
 
-## 📋 Índice
+## Índice
 
 1. [Resumen Ejecutivo](#resumen-ejecutivo)
 2. [Autores](#autores)
@@ -22,81 +22,73 @@
 18. [Cronograma y Tiempos de Desarrollo](#cronograma-y-tiempos-de-desarrollo)
 19. [Equipo de Desarrollo](#equipo-de-desarrollo)
 20. [Licencia y Uso del Proyecto](#licencia-y-uso-del-proyecto)
-21. [Conclusiones Finales](#conclusiones-finales)
+21. [Capturas de Pantalla - Interfaz de la Aplicación](#capturas-de-pantalla---interfaz-de-la-aplicación)
+22. [Conclusiones Finales](#conclusiones-finales)
 
 ---
 
-## 📁 Resumen Ejecutivo
+## Resumen Ejecutivo
 
-Este proyecto consiste en la creación de un **Simulador Bancario Educativo**, que permite emular las operaciones más comunes dentro de una entidad financiera, como transferencias, pagos, solicitud de préstamos, atención por ventanilla y más. El objetivo es que los estudiantes comprendan cómo se estructuran las aplicaciones bancarias, la importancia de la gestión de datos y el funcionamiento de colas de atención.
+Este proyecto consiste en la creación de un **Simulador Bancario Educativo**, que permite emular las operaciones más comunes dentro de una entidad financiera...
 
 🚨 La plataforma tiene fines exclusivamente académicos y no representa transacciones reales.
 
 ---
 
-## 👨‍💻 Autores
+## Autores
 
-**Equipo N° 7**
-Curso: *Algoritmos y Programación en Python*
-Ciclo: *3° Ciclo*
+**Equipo N° 7**  
+Curso: *Algoritmos y Programación en Python*  
+Ciclo: *3° Ciclo*  
 Carrera: *Diseño y Desarrollo de Software*
 
 ---
 
-## 🎓 Carrera y Contexto Académico
+## Carrera y Contexto Académico
 
-Proyecto desarrollado como simulador funcional para la asignatura de *Algoritmos y Programación en Python*, perteneciente al plan de estudios de la carrera **Diseño y Desarrollo de Software**, bajo la guía académica del profesor:
+Proyecto desarrollado como simulador funcional para la asignatura...
 
 👨‍💼 **Camasca Macedo, Charles Dummar**
 
 ---
 
-## 🎯 Objetivos del Proyecto
+## Objetivos del Proyecto
 
-👉 Simular operaciones de una entidad bancaria digital.
-👉 Reforzar habilidades de programación, estructuras de datos y modelado de sistemas.
-👉 Aplicar teoría de colas como parte central de las operaciones.
-👉 Desarrollar un sistema modular, escalable y funcional.
-
----
-
-## 🏩 Justificación
-
-Hoy en día, el sector financiero digital es esencial. Comprender su funcionamiento es clave para cualquier desarrollador. Esta simulación permite experimentar en un entorno seguro, adquiriendo habilidades aplicables al mundo real, sin comprometer recursos financieros.
+👉 Simular operaciones de una entidad bancaria digital.  
+👉 Reforzar habilidades de programación...  
+👉 Aplicar teoría de colas...  
+👉 Desarrollar un sistema modular...
 
 ---
 
-## 🌍 Aporte Social y Educativo
+## Justificación
 
-**Educativo:** Aprendizaje práctico sobre desarrollo de sistemas financieros.
-**Social:** Sensibilización sobre el funcionamiento de las apps bancarias.
-**Tecnológico:** Formación en tecnologías de desarrollo actuales y estructuras de datos.
+Hoy en día, el sector financiero digital es esencial...
 
 ---
 
-## 💡 Ventajas y Beneficios
+## Aporte Social y Educativo
 
-👉 Simulación sin riesgos económicos.
-👉 Reforzamiento de conocimientos teóricos.
-👉 Uso de herramientas y lenguajes reales del sector.
-👉 Sistema modular, documentado y ampliable.
-👉 Fomenta el trabajo colaborativo y metodologías ágiles.
+**Educativo:** Aprendizaje práctico sobre desarrollo de sistemas financieros.  
+**Social:** Sensibilización sobre el funcionamiento de las apps bancarias...  
+**Tecnológico:** Formación en tecnologías...
 
 ---
 
-## 🔧 Motivación Tecnológica (Colas como motor del proyecto)
+## Ventajas y Beneficios
 
-El concepto de colas es esencial en sistemas reales, ya sea en ventanillas físicas o entornos virtuales. Nuestra plataforma integra este modelo en la atención de clientes, permitiendo simular:
-
-🔹 Gestión de turnos en ventanillas.
-🔹 Control de flujo de atención.
-🔹 Ordenamiento y prioridad en solicitudes.
-
-Las estructuras de datos utilizadas refuerzan el aprendizaje técnico mientras se aplican a un caso concreto.
+👉 Simulación sin riesgos económicos...  
+👉 Reforzamiento de conocimientos teóricos...
 
 ---
 
-## 🛠️ Tecnologías y Herramientas Utilizadas
+## Motivación Tecnológica (Colas como motor del proyecto)
+
+El concepto de colas es esencial en sistemas reales...
+
+---
+
+## Tecnologías y Herramientas Utilizadas
 
 | Área          | Herramienta                              |
 | ------------- | ---------------------------------------- |
@@ -107,57 +99,31 @@ Las estructuras de datos utilizadas refuerzan el aprendizaje técnico mientras s
 
 ---
 
-## 🏗️ Arquitectura del Proyecto
+## Arquitectura del Proyecto
 
-La aplicación sigue el esquema cliente-servidor:
-
-```bash
-[Cliente (Navegador)] ⇄ [Servidor Node.js] ⇄ [Base de Datos MySQL/PostgreSQL]
-```
-
-**Estructura de carpetas:**
-
-* `/public`: Recursos estáticos (imágenes, CSS, JS)
-* `/routes`: Rutas y controladores de API
-* `/controllers`: Lógica de negocio
-* `/models`: Modelado de entidades y conexión BD
-* `/views`: Interfaz de usuario (si aplica)
+La aplicación sigue el esquema cliente-servidor...
 
 ---
 
-## 📈 Diseño de la Base de Datos
+## Diseño de la Base de Datos
 
-Modelo relacional con integridad referencial y normalización. Incluye:
-
-👉 Gestión de usuarios y autenticación.
-👉 Cuentas en soles y dólares.
-👉 Transferencias internas y mediante Yape.
-👉 Préstamos, tarjetas y pagos.
-👉 Cola de atención y operaciones de ventanilla.
-👉 Evaluación crediticia y calificación.
+Modelo relacional con integridad referencial y normalización...
 
 ---
 
-## 🧹 Módulos Desarrollados
+## Módulos Desarrollados
 
-👉 Registro/Login con seguridad básica.
-👉 Visualización y gestión de saldos.
-👉 Transferencias tradicionales y por Yape.
-👉 Simulación de atención en ventanilla (colas).
-👉 Solicitud y evaluación de créditos.
-👉 Gestión de tarjetas de crédito.
-👉 Histórico de operaciones y pagos.
-👉 Panel de soporte básico.
+👉 Registro/Login con seguridad básica...  
+👉 Transferencias tradicionales y por Yape...  
 
 ---
 
-## 🚀 Guía Completa de Instalación y Ejecución
+## Guía Completa de Instalación y Ejecución
 
-**Requisitos previos:**
-
-* Node.js
-* MySQL o PostgreSQL
-* Git
+**Requisitos previos:**  
+* Node.js  
+* MySQL o PostgreSQL  
+* Git  
 * Navegador actualizado
 
 **Pasos:**
@@ -166,8 +132,8 @@ Modelo relacional con integridad referencial y normalización. Incluye:
 git clone <url_del_proyecto>
 ```
 
-1. Crear base de datos y ejecutar los scripts SQL proporcionados.
-2. Configurar conexión en `/config/db.js`.
+1. Crear base de datos...  
+2. Configurar conexión...  
 3. Instalar dependencias:
 
 ```bash
@@ -180,7 +146,7 @@ npm install
 npm start
 ```
 
-5. Acceder vía navegador en:
+5. Acceder vía navegador:
 
 ```bash
 http://localhost:3000
@@ -188,7 +154,7 @@ http://localhost:3000
 
 ---
 
-## 💻 Compatibilidad y Requisitos de Hardware
+## Compatibilidad y Requisitos de Hardware
 
 | Requisito      | Especificación Mínima |
 | -------------- | --------------------- |
@@ -200,67 +166,62 @@ http://localhost:3000
 
 ---
 
-## 📖 Manual de Usuario - Guía Práctica
+## Manual de Usuario - Guía Práctica
 
-* Iniciar sesión con un usuario registrado.
-* Visualizar saldos y operaciones disponibles.
-* Realizar transferencias entre cuentas o por Yape.
-* Solicitar un préstamo o tarjeta de crédito.
-* Acceder al historial de pagos y operaciones.
-* Utilizar el sistema de atención por colas simuladas.
+* Iniciar sesión con un usuario registrado...  
+* Visualizar saldos y operaciones...  
 
 ---
 
-## 🔬 Manual Técnico
+## Manual Técnico
 
-* Backend en Node.js y Express.
-* Base de datos adaptable a MySQL o PostgreSQL.
-* Arquitectura modular en controladores, rutas y modelos.
-* Tecnologías web estándar para frontend.
-* Documentación interna por cada módulo.
+* Backend en Node.js y Express...  
+* Base de datos adaptable...  
+* Documentación interna por cada módulo...
 
 ---
 
-## 💲 Aspecto Económico
+## Aspecto Económico
 
-Solución de bajo costo, usando tecnologías gratuitas y de código abierto. Ideal para entornos académicos o simulaciones internas.
-
----
-
-## 🗓️ Cronograma y Tiempos de Desarrollo
-
-* **Semana 1-2:** Análisis, diseño de base de datos y mockups.
-* **Semana 3-4:** Desarrollo de módulos backend.
-* **Semana 5:** Implementación de frontend y conexión.
-* **Semana 6:** Pruebas, documentación y entrega final.
+Solución de bajo costo...
 
 ---
 
-## 👥 Equipo de Desarrollo
+## Cronograma y Tiempos de Desarrollo
 
-**Equipo N° 7** - Carrera Diseño y Desarrollo de Software
-Curso: *Algoritmos y Programación en Python*
+* Semana 1-2: Análisis, diseño...  
+* Semana 3-4: Backend...  
+* Semana 5: Frontend...  
+* Semana 6: Pruebas y entrega...
+
+---
+
+## Equipo de Desarrollo
+
+**Equipo N° 7** - Carrera Diseño y Desarrollo de Software  
+Curso: *Algoritmos y Programación en Python*  
 Guía Académico: *Camasca Macedo, Charles Dummar*
 
 ---
 
-## 📜 Licencia y Uso del Proyecto
+## Licencia y Uso del Proyecto
 
-Proyecto de uso exclusivamente académico.
-Prohibido su uso en ambientes productivos o con datos reales.
-Código fuente disponible para estudio y prácticas.
+Proyecto de uso exclusivamente académico...
 
 ---
 
-## 🌿 Conclusiones Finales
+## Capturas de Pantalla - Interfaz de la Aplicación
 
-Este simulador bancario permitió a los estudiantes integrar conocimientos clave de programación, estructuras de datos y diseño de software aplicados a un entorno financiero. Se destaca:
-
-👉 Implementación de la teoría de colas en un entorno práctico.
-👉 Simulación de procesos bancarios reales en formato modular.
-👉 Reforzamiento de competencias técnicas con herramientas actuales.
-👉 Importancia del trabajo colaborativo y metodologías ágiles.
-
-🚨 El sistema es académico, no representa operaciones reales ni debe usarse en producción.
+![Pantalla Principal](./static/styless/readmi/image2.png)  
+![Operaciones - Transferencias](./static/styless/readmi/iamge3.png)  
+![Perfil admin](./static/styless/readmi/iamge6.png)  
+![Historial y Pagos](./static/styless/readmi/iamg4.png)  
+![Panel de yape](./static/styless/readmi/image5.png)
 
 ---
+
+## Conclusiones Finales
+
+Este simulador bancario permitió a los estudiantes integrar conocimientos...
+
+🚨 El sistema es académico, no representa operaciones reales...

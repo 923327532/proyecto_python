@@ -15,6 +15,10 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            background-image: url('../static/image/login.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .container {
@@ -116,7 +120,6 @@
             opacity: 1;
         }
 
-        /* Animación principal de carga */
         .loader-container {
             text-align: center;
             color: white;
@@ -191,32 +194,19 @@
             animation: progressFill 2s ease-in-out infinite;
         }
 
-        /* Keyframes */
         @keyframes modernSpin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
         @keyframes pulseRing {
-            0% {
-                transform: scale(0.8);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.2);
-                opacity: 0;
-            }
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(1.2); opacity: 0; }
         }
 
         @keyframes dotPulse {
-            0%, 80%, 100% {
-                transform: scale(0.6);
-                opacity: 0.5;
-            }
-            40% {
-                transform: scale(1);
-                opacity: 1;
-            }
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
         }
 
         @keyframes textGlow {
@@ -231,18 +221,11 @@
         }
 
         @keyframes progressFill {
-            0% {
-                transform: translateX(-100%);
-            }
-            50% {
-                transform: translateX(0%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(0%); }
+            100% { transform: translateX(100%); }
         }
 
-        /* Efecto de partículas flotantes */
         .floating-particles {
             position: absolute;
             width: 100%;
@@ -261,64 +244,44 @@
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10%, 90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Iniciar Sesión</h2>
-
         <form method="POST" action="{{ url_for('login') }}" id="loginForm">
             <div class="form-group">
                 <label for="usuario">Usuario o Correo:</label>
                 <input type="text" id="usuario" name="usuario" placeholder="Escribe tu usuario o correo" required>
             </div>
-
             <div class="form-group">
                 <label for="clave">Contraseña:</label>
                 <input type="password" id="clave" name="clave" required>
             </div>
-
             <button type="submit">Ingresar</button>
         </form>
-
         <p class="register-link">
             ¿No tienes cuenta? <a href="{{ url_for('register') }}">Regístrate aquí</a>
         </p>
     </div>
 
-    <!-- Overlay de carga mejorado -->
     <div class="loader-overlay" id="loaderOverlay">
         <div class="floating-particles" id="particles"></div>
-        
         <div class="loader-container">
             <div class="modern-loader">
                 <div class="pulse-ring"></div>
                 <div class="spinner"></div>
             </div>
-            
             <div class="dots-container">
                 <div class="dot"></div>
                 <div class="dot"></div>
                 <div class="dot"></div>
             </div>
-            
             <div class="loading-text">Autenticando...</div>
-            
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
@@ -326,11 +289,9 @@
     </div>
 
     <script>
-        // Crear partículas flotantes
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             const particleCount = 15;
-            
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
@@ -341,17 +302,13 @@
             }
         }
 
-        // Manejar el envío del formulario
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
             const overlay = document.getElementById('loaderOverlay');
             overlay.style.display = 'flex';
             createParticles();
-            
-            // Mostrar con transición suave
             setTimeout(() => {
                 overlay.classList.add('show');
             }, 10);
-            
         });
     </script>
 </body>
