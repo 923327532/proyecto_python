@@ -43,6 +43,10 @@ def usuario_home():
     cursor.execute("SELECT mensaje, respuesta, fecha FROM mensajes WHERE usuario = %s ORDER BY fecha DESC", (usuario,))
     mensajes = cursor.fetchall()
 
+    cursor.execute("SELECT remitente, monto, fecha FROM transferencias WHERE destinatario = %s ORDER BY fecha DESC", (usuario,))
+    recibidas = cursor.fetchall()
+
+
 
     cinco_dias_atras = datetime.now() - timedelta(days=5)
     cursor.execute("""
@@ -73,7 +77,8 @@ def usuario_home():
                            saldo=saldo,
                            calificacion=calificacion,
                            cambios=cambios,
-                           numero_cuenta=numero_cuenta
+                           numero_cuenta=numero_cuenta,
+                           recibidas=recibidas
                           )
 
 @user_bp.route('/transferencia', methods=['GET', 'POST'])

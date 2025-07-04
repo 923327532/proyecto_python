@@ -658,3 +658,148 @@ body {
         font-size: 13px;
     }
 }
+
+/*icono soporte */
+/* Botón flotante de soporte */
+.btn-soporte {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #004aad, #0066cc);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-soporte:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.btn-soporte img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Formulario emergente */
+.formulario-soporte {
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 350px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border: 2px solid #004aad;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  z-index: 998;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.formulario-soporte h3 {
+  color: #004aad;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.formulario-soporte form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.formulario-soporte form button {
+  margin-top: 12px;
+  background-color: #004aad;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.formulario-soporte form button:hover {
+  background-color: #0066cc;
+}
+
+/* Historial de mensajes */
+.messages-table {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.table-header, .table-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.table-header {
+  font-weight: bold;
+  color: #004aad;
+}
+
+.table-row span {
+  flex: 1;
+  padding-right: 10px;
+  word-wrap: break-word;
+}
+/* Enlaces del header (derecha) */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-link.logout {
+  background-color: #dc3545;
+  color: white;
+}
+
+.nav-link.logout:hover {
+  background-color: #c82333;
+}
+
+.account-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}

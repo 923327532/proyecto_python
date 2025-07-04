@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BancoTecsup - Dashboard Cliente</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styless/user/usuario.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styless/user/soporte.css') }}" />
 </head>
 
 <body>
@@ -15,15 +16,17 @@
       <div class="logo">
         <span class="bcp-logo">BancoTecsup</span>
       </div>
-
+      <nav class="nav-links">
+        <a href="{{ url_for('user.solicitar_tarjeta') }}" class="nav-link">Solicitar Tarjeta</a>
+        <a href="{{ url_for('user.prestamo') }}" class="nav-link">Solicitar Préstamo</a>
+        <a href="{{ url_for('logout') }}" class="nav-link logout">Cerrar sesión</a>
+      </nav>
     </div>
 
     <div class="welcome-section">
       <div class="welcome-container">
         <div class="welcome-content">
-          <p class="last-session">
-            Última sesión fue 03 junio 2025 a las 09:07 hrs
-          </p>
+          <p class="last-session">Última sesión fue 03 junio 2025 a las 09:07 hrs</p>
           <h1 class="welcome-title">Hola, {{ nombre }}</h1>
         </div>
         <div class="welcome-illustration">
@@ -37,133 +40,128 @@
   <main class="main-content">
     <div class="container">
       <div class="content-grid">
-        <!-- Left Column -->
-        <div class="left-column">
-          <!-- Quick Actions -->
-          <section class="quick-actions">
-            <h2 class="section-title">¿Qué vamos a hacer hoy?</h2>
-            <div class="actions-grid">
-              <a href="{{ url_for('user.transferencia') }}" class="action-item">
-                <div class="action-icon transfer-icon">⇄</div>
-                <span class="action-text">Transferir<br />dinero</span>
-              </a>
-              <a href="{{ url_for('yape.yape_opciones') }}" class="action-item">
-                <div class="action-icon mobile-icon">📱</div>
-                <span class="action-text">Yape</span>
-              </a>
+  
+  <!-- Left Column -->
+  <div class="left-column">
+    
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+      <h2 class="section-title">¿Qué vamos a hacer hoy?</h2>
+      <div class="actions-grid">
+        <a href="{{ url_for('user.transferencia') }}" class="action-item">
+          <div class="action-icon transfer-icon">⇄</div>
+          <span class="action-text">Transferir<br />dinero</span>
+        </a>
+        <a href="{{ url_for('user.pagar_tarjeta') }}" class="action-item">
+          <div class="action-icon card-icon">💳</div>
+          <span class="action-text">Pagar<br />tarjetas</span>
+        </a>
+        <a href="{{ url_for('yape.yape_opciones') }}" class="action-item">
+          <div class="action-icon mobile-icon">📱</div>
+          <span class="action-text">Yape</span>
+        </a>
+        <a href="{{ url_for('user.pago') }}" class="action-item">
+          <div class="action-icon services-icon">💧</div>
+          <span class="action-text">Pagar<br />servicios</span>
+        </a>
+      </div>
+    </section>
 
-              <a href="{{ url_for('user.pagar_tarjeta') }}" class="action-item">
-
-                <div class="action-icon card-icon">💳</div>
-                <span class="action-text">Pagar<br />tarjetas</span>
-              </a>
-
-              <a href="{{ url_for('user.pago') }}" class="action-item">
-                <div class="action-icon services-icon">💧</div>
-                <span class="action-text">Pagar<br />servicios</span>
-              </a>
-            </div>
-          </section>
-
-          <!-- Promotional Cards -->
-          <div class="promo-card exchange-card">
-            <a href="{{ url_for('user.cambiar_moneda_usuario') }}">
-              <div class="promo-content">
-                <h3>Cambia soles y dólares</h3>
-                <p>Online</p>
-              </div>
-              <div class="promo-icon">💱</div>
-            </a>
-          </div>
-
-          <section class="quick-links">
-            <a href="{{ url_for('user.solicitar_tarjeta') }}" class="quick-link">Solicitar Tarjeta</a>
-            <a href="{{ url_for('user.prestamo') }}" class="quick-link">Solicitar Préstamo</a>
-            <a href="{{ url_for('logout') }}" class="quick-link logout">Cerrar sesión</a>
-          </section>
+    <!-- Exchange Card -->
+    <div class="promo-card exchange-card">
+      <a href="{{ url_for('user.cambiar_moneda_usuario') }}">
+        <div class="promo-content">
+          <h3>Cambia soles y dólares</h3>
+          <p>Online</p>
         </div>
-        <div class="right-column">
-          <!-- Account Products -->
-          <section class="account-section">
-            <div class="section-header">
-              <h2 class="section-title">Mis productos</h2>
+        <div class="promo-icon">💱</div>
+      </a>
+    </div>
 
-            </div>
+  </div>
 
-            <div class="account-card">
-              <div class="account-info">
-                <div class="account-icon">💳</div>
-                <div class="account-details">
-                  <h3>Cuenta Digital Soles</h3>
-                  <p class="account-number">**** {{ numero_cuenta[-4:] }}</p>
-                </div>
-              </div>
-              <div class="account-balance">
-                <span class="balance-amount">S/ {{ saldo }}</span>
-                <span class="balance-label">Saldo disponible</span>
-              </div>
-            </div>
+  <!-- Right Column -->
+  <div class="right-column">
 
-            <div class="cuenta-box">
-              <h4>Tu número de cuenta completo:</h4>
-              <p id="numeroCuenta">{{ numero_cuenta }}</p>
-              <button onclick="copiarCuenta()" class="copy-btn">
-                Copiar número
-              </button>
-            </div>
+    <!-- Account Section -->
+    <section class="account-section">
+      <div class="section-header">
+        <h2 class="section-title">Mis productos</h2>
+      </div>
 
+      <div class="account-card">
+        <div class="account-info">
+          <div class="account-icon">💳</div>
+          <div class="account-details">
+            <h3>Cuenta Digital Soles</h3>
+            <p class="account-number">**** {{ numero_cuenta[-4:] }}</p>
+          </div>
+        </div>
+        <div class="account-balance">
+          <span class="balance-amount">S/ {{ saldo }}</span>
+          <span class="balance-label">Saldo disponible</span>
+        </div>
+      </div>
 
-          </section>
+      <div class="cuenta-box">
+        <h4>Tu número de cuenta completo:</h4>
+        <p id="numeroCuenta">{{ numero_cuenta }}</p>
+        <button onclick="copiarCuenta()" class="copy-btn">Copiar número</button>
+      </div>
+    </section>
 
-          <!-- Favorites -->
+    <!-- Transferencias -->
+    <section class="transfers-section">
+      <h3>Transferencias Recibidas</h3>
+      <div class="transfers-list">
+        {% for r in recibidas %}
+        <div class="transfer-item">
+          <span class="transfer-amount">S/ {{ r[1] }}</span>
+          <span class="transfer-from">de {{ r[0] }}</span>
+          <span class="transfer-date">{{ r[2] }}</span>
+        </div>
+        {% else %}
+        <div class="empty-state">No has recibido transferencias.</div>
+        {% endfor %}
+      </div>
+    </section>
 
+  </div>
 
-          <!-- Additional Sections -->
-          <div class="additional-sections">
-            <!-- Transfers Received -->
-            <section class="transfers-section">
-              <h3>Transferencias Recibidas</h3>
-              <div class="transfers-list">
-                {% for r in recibidas %}
-                <div class="transfer-item">
-                  <span class="transfer-amount">S/ {{ r[1] }}</span>
-                  <span class="transfer-from">de {{ r[0] }}</span>
-                  <span class="transfer-date">{{ r[2] }}</span>
-                </div>
-                {% else %}
-                <div class="empty-state">No has recibido transferencias.</div>
-                {% endfor %}
-              </div>
-            </section>
+</div>
 
-            <!-- Messages Section -->
-            <section class="messages-section">
-              <h3>Enviar Mensaje al Banco</h3>
-              <form method="post" action="{{ url_for('user.mensaje') }}" class="message-form">
-                <textarea name="mensaje" rows="4" required placeholder="Escribe tu mensaje aquí..."></textarea>
-                <button type="submit" class="submit-btn">Enviar Mensaje</button>
-              </form>
+    </div>
+  </main>
 
-              <h3>Historial de Mensajes</h3>
-              <div class="messages-table">
-                <div class="table-header">
-                  <span>Mensaje</span>
-                  <span>Respuesta del Banco</span>
-                  <span>Fecha</span>
-                </div>
-                {% for m in mensajes %}
-                <div class="table-row">
-                  <span>{{ m[0] }}</span>
-                  <span>{{ m[1] if m[1] else "Pendiente" }}</span>
-                  <span>{{ m[2] }}</span>
-                </div>
-                {% endfor %}
-              </div>
-            </section> <!-- Fin sección mensajes -->
-          </div> <!-- Fin additional-sections -->
-        </div> <!-- Fin right-column --><!-- Fin content-grid -->
-      </div> <!-- Fin container -->
-  </main> <!-- Fin main-content -->
+  <!-- Soporte - Botón flotante -->
+  <button class="btn-soporte" onclick="toggleSoporte()">
+    <img src="{{ url_for('static', filename='image/icono.png') }}" alt="Soporte" />
+  </button>
+
+  <!-- Soporte - Formulario Emergente -->
+  <div class="formulario-soporte" id="formularioSoporte">
+    <h3>Enviar Mensaje al Banco</h3>
+    <form method="post" action="{{ url_for('user.mensaje') }}">
+      <textarea name="mensaje" rows="4" required placeholder="Escribe tu mensaje aquí..."></textarea>
+      <button type="submit">Enviar Mensaje</button>
+    </form>
+
+    <h3>Historial de Mensajes</h3>
+    <div class="messages-table">
+      <div class="table-header">
+        <span>Mensaje</span>
+        <span>Respuesta del Banco</span>
+        <span>Fecha</span>
+      </div>
+      {% for m in mensajes %}
+      <div class="table-row">
+        <span>{{ m[0] }}</span>
+        <span>{{ m[1] if m[1] else "Pendiente" }}</span>
+        <span>{{ m[2] }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -185,9 +183,12 @@
         alert("Número de cuenta copiado: " + texto);
       });
     }
+
+    function toggleSoporte() {
+      const formulario = document.getElementById("formularioSoporte");
+      formulario.style.display = (formulario.style.display === "block") ? "none" : "block";
+    }
   </script>
 </body>
 
 </html>
-
-<div>
