@@ -20,8 +20,8 @@
         <h2 class="success-title">Número Yape registrado con éxito</h2>
         <p class="success-message">¡Vive la experiencia de Yape! 🎉</p>
         <div class="success-actions">
-          <a href="{{ url_for('user.usuario_home') }}" class="btn-volver">
-            Volver al inicio
+          <a href="{{ url_for('yape.yape_opciones') }}" class="btn-volver">
+            Volver
           </a>
         </div>
       </div>
@@ -67,7 +67,7 @@
           {% for category, message in messages %}
             <div class="flash-message flash-{{ category }}">
               <span class="message-icon">
-                {% if category == 'error' %}⚠️{% else %}✅{% endif %}
+                {% if category == 'error' %}{% else %}{% endif %}
               </span>
               <span class="message-text">{{ message }}</span>
             </div>

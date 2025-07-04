@@ -24,6 +24,7 @@ def yape_opciones():
 
     return render_template('usuario/opciones_yape.html', telefono=telefono)
 
+
 @yape_bp.route('/registrar', methods=['GET', 'POST'])
 def registrar_yape():
     if 'usuario' not in session:
@@ -35,8 +36,9 @@ def registrar_yape():
     if request.method == 'POST':
         telefono = request.form['telefono'].strip()
 
-        if len(telefono) != 9 or not telefono.isdigit():
-            flash("El número debe tener 9 dígitos", "error")
+        # Validar que sean 9 dígitos y que empiece con 9
+        if len(telefono) != 9 or not telefono.isdigit() or not telefono.startswith('9'):
+            flash("El número debe tener 9 dígitos y empezar con 9", "error")
             return redirect(url_for('yape.registrar_yape'))
 
         db = get_db_connection()
@@ -53,6 +55,7 @@ def registrar_yape():
             db.close()
 
     return render_template('usuario/registrar_yape.html', exito=exito)
+
 
 @yape_bp.route('/enviar', methods=['GET', 'POST'])
 def enviar_yape():
@@ -73,23 +76,22 @@ def enviar_yape():
         receptor_data = cursor.fetchone()
         if not receptor_data:
             flash("Número no registrado en Yape", "error")
-            return redirect(url_for('yape.enviar_yape'))
+            return redirect(url_for('yape.escanear_qr'))
 
         destinatario = receptor_data[0]
 
-        # Validar saldo
         cursor.execute("SELECT saldo FROM usuarios WHERE usuario = %s", (remitente,))
         saldo_data = cursor.fetchone()
 
         if not saldo_data:
             flash("No se encontró tu cuenta.", "error")
-            return redirect(url_for('yape.enviar_yape'))
+            return redirect(url_for('yape.escanear_qr'))
 
         saldo = saldo_data[0]
 
         if saldo < monto:
             flash(f"No tienes saldo suficiente para yapear. Tu saldo actual es: S/ {saldo:.2f}", "error")
-            return redirect(url_for('yape.enviar_yape'))
+            return redirect(url_for('yape.escanear_qr'))
 
         try:
             cursor.execute("UPDATE usuarios SET saldo = saldo - %s WHERE usuario = %s", (monto, remitente))
@@ -104,10 +106,11 @@ def enviar_yape():
             cursor.close()
             db.close()
 
-        return redirect(url_for('user.usuario_home'))
-
+        # Aquí lo importante: vuelves al escaneo QR con el mensaje exitoso
+        return redirect(url_for('yape.escanear_qr'))
 
     return render_template('usuario/enviar_yape.html', telefono_prefill=telefono_prefill)
+
 
 @yape_bp.route('/escanear_qr')
 def escanear_qr():
