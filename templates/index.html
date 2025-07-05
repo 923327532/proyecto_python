@@ -8,62 +8,122 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url('../static/image/fondo.png');
+            background-image: url('../static/image/tecsupfondo.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: center 50px;
             background-repeat: no-repeat;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .card {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 60px 50px;
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
+        header .logo {
+            height: 50px;
         }
 
-        .card img.logo {
-            width: 100px;
-            height: auto;
-            margin: 0 auto 25px auto;
-            display: block;
-        }
-
-        .card h1 {
-            color: #2c3e50;
-            font-size: 30px;
-            margin-bottom: 35px;
-        }
-
-        a {
-            display: inline-block;
-            margin: 10px;
-            padding: 14px 30px;
+        header nav a {
+            margin-left: 20px;
+            padding: 10px 20px;
             background-color: #3498db;
             color: white;
             text-decoration: none;
-            border-radius: 10px;
-            font-size: 18px;
+            border-radius: 8px;
             transition: background-color 0.3s ease;
         }
 
-        a:hover {
+        header nav a:hover {
             background-color: #2ecc71;
         }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .carousel {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .carousel h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .carousel p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #eee;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 14px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
+    <script>
+        const mensajes = [
+            "Tu banco digital de confianza.",
+            "Gestiona tus cuentas de forma segura.",
+            "Solicita préstamos desde casa.",
+            "Atención personalizada 24/7."
+        ];
+
+        let i = 0;
+        function rotarTexto() {
+            document.getElementById("mensaje-carousel").innerText = mensajes[i];
+            i = (i + 1) % mensajes.length;
+        }
+
+        setInterval(rotarTexto, 3000);
+    </script>
 </head>
 <body>
-    <div class="card">
+    <header>
         <img src="../static/image/log.png" alt="Logo Banco Tecsup" class="logo">
-        <h1>Banco Tecsup</h1>
-        <a href="{{ url_for('register') }}">Registrarse</a>
-        <a href="{{ url_for('login') }}">Iniciar sesión</a>
+        <nav>
+            <a href="{{ url_for('register') }}">Registrarse</a>
+            <a href="{{ url_for('login') }}">Iniciar sesión</a>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <div class="carousel">
+            <h2>Bienvenido a Banco Tecsup</h2>
+            <p id="mensaje-carousel">Tu banco digital de confianza.</p>
+        </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Banco Tecsup. Todos los derechos reservados.
+    </footer>
 </body>
 </html>

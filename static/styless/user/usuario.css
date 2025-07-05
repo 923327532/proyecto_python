@@ -472,7 +472,7 @@ body {
 }
 
 .submit-btn:hover {
-    background-color: #003a8c;
+    background-color: #72a9f6;
 }
 
 /* Messages Table */
@@ -760,6 +760,7 @@ body {
   word-wrap: break-word;
 }
 /* Enlaces del header (derecha) */
+
 .nav-links {
   display: flex;
   gap: 1rem;
@@ -780,12 +781,16 @@ body {
 }
 
 .nav-link.logout {
-  background-color: #dc3545;
   color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
 }
 
 .nav-link.logout:hover {
-  background-color: #c82333;
+  background-color: rgba(145, 7, 7, 0.404);
 }
 
 .account-card {
