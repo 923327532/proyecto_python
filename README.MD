@@ -90,12 +90,13 @@ El concepto de colas es esencial en sistemas reales...
 
 ## Tecnologías y Herramientas Utilizadas
 
-| Área          | Herramienta                              |
-| ------------- | ---------------------------------------- |
-| Backend       | Node.js, Express                         |
-| Frontend      | HTML5, CSS3, Bootstrap                   |
-| Base de Datos | MySQL (PostgreSQL adaptable)             |
-| Otros         | JavaScript, Visual Studio Code, Git, npm |
+| Área          | Herramienta                        |
+| ------------- | ---------------------------------- |
+| Lenguaje      | Python                             |
+| Backend       | Flask                              |
+| Frontend      | HTML5, CSS3, Bootstrap             |
+| Base de Datos | PostgreSQL (adaptable a MySQL)     |
+| Otros         | JavaScript (mínimo), VS Code, Git  |
 
 ---
 
@@ -120,37 +121,23 @@ Modelo relacional con integridad referencial y normalización...
 
 ## Guía Completa de Instalación y Ejecución
 
-**Requisitos previos:**  
-* Node.js  
-* MySQL o PostgreSQL  
-* Git  
-* Navegador actualizado
-
-**Pasos:**
-
-```bash
+# Clona el proyecto
 git clone <url_del_proyecto>
-```
+cd <carpeta_del_proyecto>
 
-1. Crear base de datos...  
-2. Configurar conexión...  
-3. Instalar dependencias:
+# Crea y activa entorno virtual (opcional pero recomendado)
+python -m venv venv
+source venv/bin/activate  # En Linux/Mac
+venv\Scripts\activate     # En Windows
 
-```bash
-npm install
-```
+# Instala Flask y dependencias
+pip install -r requirements.txt  # si tienes este archivo
+# o manual:
+pip install flask psycopg2
 
-4. Iniciar servidor:
-
-```bash
-npm start
-```
-
-5. Acceder vía navegador:
-
-```bash
-http://localhost:3000
-```
+flask run
+Luego ve a:
+👉 http://localhost:5000 (por defecto Flask usa el puerto 5000, no 8000 a menos que lo especifiques).
 
 ---
 
@@ -175,7 +162,7 @@ http://localhost:3000
 
 ## Manual Técnico
 
-* Backend en Node.js y Express...  
+* Backend en flask ...  
 * Base de datos adaptable...  
 * Documentación interna por cada módulo...
 
