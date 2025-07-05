@@ -186,23 +186,48 @@
   </div>
 
   <script>
-    function actualizarMaxLength() {
-      const tipo = document.getElementById('tipo_documento').value;
-      const documento = document.getElementById('documento');
+  function actualizarMaxLength() {
+    const tipo = document.getElementById('tipo_documento').value;
+    const documento = document.getElementById('documento');
 
-      if (tipo === 'dni') {
-        documento.maxLength = 8;
-      } else if (tipo === 'carnet') {
-        documento.maxLength = 9;
-      } else if (tipo === 'ruc') {
-        documento.maxLength = 11;
-      } else {
-        documento.maxLength = 8;
-      }
-      documento.value = '';
+    if (tipo === 'dni') {
+      documento.maxLength = 8;
+    } else if (tipo === 'carnet') {
+      documento.maxLength = 9;
+    } else if (tipo === 'ruc') {
+      documento.maxLength = 11;
+    } else {
+      documento.maxLength = 8;
     }
+    documento.value = '';
+  }
 
-    window.onload = actualizarMaxLength;
+  window.onload = function() {
+    actualizarMaxLength();
+    ocultarCamposSiEsAdmin();
+  };
+
+  document.getElementById('usuario').addEventListener('input', ocultarCamposSiEsAdmin);
+
+  function ocultarCamposSiEsAdmin() {
+    const usuario = document.getElementById('usuario').value.trim().toLowerCase();
+    const tipoDocGroup = document.getElementById('tipo_documento').parentElement;
+    const docGroup = document.getElementById('documento').parentElement;
+
+    if (usuario.startsWith('admin')) {
+      tipoDocGroup.style.display = 'none';
+      docGroup.style.display = 'none';
+      document.getElementById('tipo_documento').required = false;
+      document.getElementById('documento').required = false;
+    } else {
+      tipoDocGroup.style.display = 'block';
+      docGroup.style.display = 'block';
+      document.getElementById('tipo_documento').required = true;
+      document.getElementById('documento').required = true;
+    }
+  }
+</script>
+
   </script>
 </body>
 </html>

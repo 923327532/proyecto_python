@@ -5,7 +5,6 @@ from colas import cola
 import random
 import admin  
 import usuario 
-import correo
 import yape 
 from correo import enviar_correo
 from psycopg2.extras import RealDictCursor 
@@ -21,16 +20,19 @@ def validar_usuario(user, password, tipo_doc, documento):
     db = get_db_connection()
     cursor = db.cursor(cursor_factory=RealDictCursor)
 
-    if tipo_doc == 'dni':
-        cursor.execute("SELECT * FROM usuarios WHERE usuario = %s AND dni = %s", (user, documento))
-    elif tipo_doc == 'carnet':
-        cursor.execute("SELECT * FROM usuarios WHERE usuario = %s AND carnet_extranj = %s", (user, documento))
-    elif tipo_doc == 'ruc':
-        cursor.execute("SELECT * FROM usuarios WHERE usuario = %s AND ruc = %s", (user, documento))
+    if user.lower().startswith('admin'):
+        cursor.execute("SELECT * FROM usuarios WHERE usuario = %s", (user,))
     else:
-        cursor.close()
-        db.close()
-        return None
+        if tipo_doc == 'dni':
+            cursor.execute("SELECT * FROM usuarios WHERE usuario = %s AND dni = %s", (user, documento))
+        elif tipo_doc == 'carnet':
+            cursor.execute("SELECT * FROM usuarios WHERE usuario = %s AND carnet_extranj = %s", (user, documento))
+        elif tipo_doc == 'ruc':
+            cursor.execute("SELECT * FROM usuarios WHERE usuario = %s AND ruc = %s", (user, documento))
+        else:
+            cursor.close()
+            db.close()
+            return None
 
     usuario = cursor.fetchone()
     cursor.close()
@@ -39,7 +41,6 @@ def validar_usuario(user, password, tipo_doc, documento):
     if usuario and check_password_hash(usuario['password'], password):
         return usuario
     return None
-
 
 @app.route('/')
 def index():
@@ -90,6 +91,8 @@ def generar_numero_cuenta():
     return "CU" + str(random.randint(10000000000000, 99999999999999))
 
 
+import re  # Importa para expresiones regulares
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -100,7 +103,7 @@ def register():
         documento = request.form['documento']
         rol = 'cliente'
 
-        # Validar documento según tipo
+        # Validación de documento
         if tipo_doc == 'dni' and (len(documento) != 8 or not documento.isdigit()):
             flash('El DNI debe tener exactamente 8 dígitos numéricos', 'danger')
             return redirect(url_for('register'))
@@ -111,10 +114,15 @@ def register():
             flash('El RUC debe tener exactamente 11 dígitos numéricos', 'danger')
             return redirect(url_for('register'))
 
+        # Validar contraseña segura
+        if len(password) < 8 or not re.search(r'[A-Z]', password) or not re.search(r'[a-z]', password) or not re.search(r'\d', password):
+            flash('La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número', 'danger')
+            return redirect(url_for('register'))
+
         db = get_db_connection()
         cursor = db.cursor()
 
-        # Validar que no se repita usuario ni documento
+        # Validación de usuario o documento existente
         cursor.execute("""
             SELECT * FROM usuarios WHERE usuario = %s OR dni = %s OR carnet_extranj = %s OR ruc = %s
         """, (
@@ -130,6 +138,7 @@ def register():
             flash('El usuario o documento ya existe', 'danger')
             return redirect(url_for('register'))
 
+        # Registro en la base de datos
         password_hash = generate_password_hash(password)
         numero_cuenta = generar_numero_cuenta()
 
@@ -155,8 +164,9 @@ def register():
 
         flash('Registro exitoso. Inicia sesión.', 'success')
         return redirect(url_for('login'))
-    
+
     return render_template('register.html')
+
 
 
 @app.route('/logout')

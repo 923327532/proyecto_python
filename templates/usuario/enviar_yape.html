@@ -28,14 +28,11 @@
         <button type="submit">Enviar</button>
     </form>
 
+    <!-- Ambos botones dentro de un solo contenedor link -->
     <div class="link">
         <a href="{{ url_for('yape.escanear_qr') }}">¿Tienes un código QR? Escanear</a>
-    </div>
-
-    <div class="link">
         <a href="{{ url_for('user.usuario_home') }}">Regresar al inicio</a>
     </div>
 
 </body>
 </html>
-

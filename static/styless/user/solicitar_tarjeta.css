@@ -38,7 +38,7 @@ h2::before {
     font-size: 22px;
 }
 
-/* Formulario */
+/* Formulario principal */
 form {
     background: white;
     border-radius: 16px;
@@ -53,7 +53,7 @@ form label {
     display: block;
     margin-bottom: 10px;
     color: #004aad;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 16px;
 }
 
@@ -76,7 +76,7 @@ select:focus {
     background: #fff;
 }
 
-/* Botón EN GRANDE, DISEÑO ELEGANTE */
+/* Botón Solicitar Tarjeta */
 button[type="submit"] {
     background: linear-gradient(135deg, #004aad, #0066cc);
     color: white;
@@ -147,23 +147,39 @@ tr:hover td {
     background-color: #f0f8ff;
 }
 
-td form button {
+/* Quitar fondo blanco al form dentro de la tabla */
+td form {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    display: inline;
+    border-radius: 0;
+    max-width: none;
+    width: auto;
+}
+
+td form[action*="cancelar_solicitud"] button[type="submit"] {
     background: linear-gradient(135deg, #dc3545, #c82333);
     color: white;
     border: none;
-    padding: 8px 20px;
-    border-radius: 8px;
-    font-size: 13px;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 11px;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(220, 53, 69, 0.3);
+    width: auto;
+    min-width: unset;
 }
 
-td form button:hover {
+td form[action*="cancelar_solicitud"] button[type="submit"]:hover {
     background: linear-gradient(135deg, #c82333, #a71e2a);
     transform: translateY(-1px);
 }
 
-/* Botón "Volver" más grande, visible en rojo */
+
+/* Botón Volver */
 a.btn, 
 a.btn-secondary {
     background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
@@ -196,7 +212,6 @@ a.btn-secondary:hover {
     background: linear-gradient(135deg, #5a6268 0%, #343a40 100%);
     color: white;
 }
-
 
 /* Responsive */
 @media (max-width: 576px) {

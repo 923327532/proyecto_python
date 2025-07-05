@@ -161,6 +161,29 @@ body {
     left: 100%;
 }
 
+
+.btn-secondary {
+    display: block;
+    background: linear-gradient(135deg, #6c757d, #495057);
+    color: white;
+    text-decoration: none;
+    padding: 14px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    border: none;
+    margin: 25px auto;
+    text-align: center;
+    max-width: 300px;
+    box-shadow: 0 4px 16px rgba(108, 117, 125, 0.3);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #5a6268, #343a40);
+    transform: translateY(-2px);
+}
 /* Table Section */
 .table-section {
     background: white;
