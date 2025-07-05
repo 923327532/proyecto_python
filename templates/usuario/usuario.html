@@ -26,7 +26,7 @@
     <div class="welcome-section">
       <div class="welcome-container">
         <div class="welcome-content">
-          <p class="last-session">Última sesión fue 03 junio 2025 a las 09:07 hrs</p>
+          <p class="last-session">Última sesión fue 11 junio 2025 a las 09:07 hrs</p>
           <h1 class="welcome-title">Hola, {{ nombre }}</h1>
         </div>
         <div class="welcome-illustration">
@@ -35,7 +35,6 @@
       </div>
     </div>
   </header>
-
   <!-- Main Content -->
   <main class="main-content">
     <div class="container">
@@ -79,7 +78,7 @@
     </div>
 
   </div>
-
+    
   <!-- Right Column -->
   <div class="right-column">
 
@@ -110,7 +109,9 @@
       </div>
     </section>
 
-    <!-- Transferencias -->
+  </div>
+
+   <!-- Transferencias -->
     <section class="transfers-section">
       <h3>Transferencias Recibidas</h3>
       <div class="transfers-list">
@@ -124,9 +125,7 @@
         <div class="empty-state">No has recibido transferencias.</div>
         {% endfor %}
       </div>
-    </section>
-
-  </div>
+    </section> 
 
 </div>
 
@@ -166,12 +165,8 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
-      <div class="footer-logo">
-        <span class="bcp-logo">&gt;Banco&lt;</span>
-      </div>
       <div class="footer-info">
-        <p>©2025 Banca por Internet | Todos los derechos reservados</p>
-        <p>Banca por teléfono: (01) 311-9898</p>
+        <p>©2025 Banca por Internet | Todos los derechos reservados|Banca por teléfono: (01) 311-9898</p>
       </div>
     </div>
   </footer>
@@ -189,6 +184,36 @@
       formulario.style.display = (formulario.style.display === "block") ? "none" : "block";
     }
   </script>
+  <script>
+function copiarCuenta() {
+    const texto = document.getElementById("numeroCuenta").innerText.trim();
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(() => {
+            alert("Número de cuenta copiado: " + texto);
+        }).catch(() => {
+            copiarManual(texto);
+        });
+    } else {
+        copiarManual(texto);
+    }
+}
+
+function copiarManual(texto) {
+    const input = document.createElement('input');
+    input.value = texto;
+    document.body.appendChild(input);
+    input.select();
+    try {
+        document.execCommand('copy');
+        alert("Número de cuenta copiado: " + texto);
+    } catch (err) {
+        alert("Error al copiar el número");
+    }
+    document.body.removeChild(input);
+}
+</script>
+
 </body>
 
 </html>
