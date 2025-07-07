@@ -135,7 +135,7 @@ input[list] {
 
 /* Monto input styling */
 input[name="monto"] {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 15px center;
     background-size: 20px;
@@ -196,7 +196,7 @@ button[type="submit"]:hover::before {
     left: 100%;
 }
 
-/* Secondary Button */
+/* Secondary Button Centrado */
 .btn-secondary {
     background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
     color: white;
@@ -204,8 +204,8 @@ button[type="submit"]:hover::before {
     padding: 14px 30px;
     border-radius: 12px;
     font-weight: 600;
-    display: inline-flex;
-    align-items: center;
+    display: block;
+    margin: 20px auto;
     gap: 10px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 16px rgba(108, 117, 125, 0.3);
@@ -213,6 +213,8 @@ button[type="submit"]:hover::before {
     letter-spacing: 0.5px;
     font-size: 14px;
     border: none;
+    max-width: 300px;
+    text-align: center;
 }
 
 .btn-secondary:hover {
@@ -262,10 +264,7 @@ button[type="submit"]:hover::before {
     padding: 18px 15px;
     border-bottom: 1px solid #f0f0f0;
     font-size: 15px;
-    border-left: none;
-    border-right: none;
     transition: background-color 0.3s ease;
-    border-top: none;
 }
 
 .table tbody tr:hover td {
@@ -276,14 +275,12 @@ button[type="submit"]:hover::before {
     border-bottom: none;
 }
 
-/* Specific styling for money column */
 .table td:nth-child(3) {
     font-weight: 600;
     color: #004aad;
     font-size: 16px;
 }
 
-/* Empty state message */
 .text-muted {
     text-align: center;
     padding: 60px 20px;
@@ -301,31 +298,25 @@ button[type="submit"]:hover::before {
     body {
         padding: 20px 15px !important;
     }
-    
     form {
         padding: 30px 20px;
     }
-    
     h2 {
         font-size: 24px;
     }
-    
     .table {
         font-size: 12px;
     }
-    
-    .table th, 
+    .table th,
     .table td {
         padding: 12px 8px;
     }
-    
     .form-control,
     input[type="number"],
     input[list] {
         padding: 14px 16px;
         font-size: 16px;
     }
-    
     .btn-primary,
     button[type="submit"] {
         padding: 14px 30px;
@@ -340,22 +331,19 @@ button[type="submit"]:hover::before {
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
     }
-    
     .table th,
     .table td {
         min-width: 100px;
     }
-    
     form {
         padding: 20px 15px;
     }
-    
     h2 {
         font-size: 20px;
     }
 }
 
-/* Animation for form appearance */
+/* Animation */
 @keyframes slideInUp {
     from {
         opacity: 0;
@@ -367,30 +355,26 @@ button[type="submit"]:hover::before {
     }
 }
 
-/* Custom scrollbar for table */
+/* Scrollbar */
 .table::-webkit-scrollbar {
     height: 8px;
 }
-
 .table::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 4px;
 }
-
 .table::-webkit-scrollbar-thumb {
     background: #004aad;
     border-radius: 4px;
 }
-
 .table::-webkit-scrollbar-thumb:hover {
     background: #003a8c;
 }
 
-/* Override Bootstrap margins */
+/* Margins */
 .mb-4 {
     margin-bottom: 2rem !important;
 }
-
 .mt-3 {
     margin-top: 1.5rem !important;
 }

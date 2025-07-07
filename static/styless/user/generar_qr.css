@@ -163,6 +163,28 @@ h2::before {
     text-align: center;
 }
 
+/* Quitar fondo blanco solo al botón volver */
+.mt-4 a[href*="usuario_home"] {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    color: #004aad;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 15px;
+    transition: color 0.3s ease;
+}
+
+.mt-4 a[href*="usuario_home"]:hover {
+    color: #003a8c;
+    transform: none;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
 /* Animation */
 @keyframes slideInUp {
     from {
@@ -187,16 +209,16 @@ body > * {
     body > * {
         padding: 20px 15px;
     }
-    
+
     h2 {
         font-size: 24px;
     }
-    
+
     .text-center, .mt-6, .mt-4 {
         padding: 20px 15px;
         margin: 15px auto;
     }
-    
+
     .mt-6 img {
         max-width: 250px;
     }
@@ -206,11 +228,11 @@ body > * {
     h2 {
         font-size: 20px;
     }
-    
+
     .text-center, .mt-6, .mt-4 {
         padding: 15px 10px;
     }
-    
+
     .text-blue-600 {
         padding: 15px 20px;
         font-size: 14px;
@@ -226,7 +248,7 @@ body > * {
     .text-center, .mt-6, .mt-4 {
         animation: none;
     }
-    
+
     .text-blue-600:hover, .mt-6 img:hover {
         transform: none;
     }

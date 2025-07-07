@@ -6,7 +6,6 @@
     <title>Escanear QR Yape</title>
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styless/user/escanear_yape.css') }}">
-
 </head>
 
 <body>
@@ -14,7 +13,7 @@
 
     <div id="reader" style="width:300px;"></div>
 
-    <form method="POST" id="formQR">
+    <form method="POST" action="{{ url_for('yape.enviar_yape') }}" id="formQR">
         <input type="hidden" name="telefono" id="telefonoQR">
         <label>Monto a enviar (S/):</label><br>
         <input type="number" step="0.01" name="monto" required><br><br>
@@ -34,7 +33,6 @@
             qrbox: 250
         }, onScanSuccess);
 
-        // Habilitar el botón solo si QR y monto están listos
         function checkFormReady() {
             const telefono = document.getElementById("telefonoQR").value;
             const monto = document.querySelector('input[name="monto"]').value;
@@ -51,6 +49,14 @@
 
     <br>
     <a href="{{ url_for('yape.enviar_yape') }}">Volver a enviar por número</a>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
 
 </body>
 

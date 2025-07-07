@@ -9,6 +9,7 @@
 <body>
   {% extends 'base.html' %}
 {% block content %}
+  
   <h2 class="text-center">Tu código QR de Yape</h2>
 
   {% if telefono %}
@@ -17,14 +18,19 @@
     <div class="flex justify-center mt-6">
       <img src="data:image/png;base64,{{ qr_base64 }}" alt="QR Yape" class="rounded shadow-lg">
     </div>
+
+    <div class="text-center mt-6">
+      <a href="{{ url_for('yape.yape_opciones') }}" class="text-blue-600 underline">Volver</a>
+    </div>
+
   {% else %}
     <p class="text-center text-red-600">No tienes un número de Yape registrado aún.</p>
     <div class="text-center mt-4">
       <a href="{{ url_for('yape.registrar_yape') }}" class="text-blue-600 underline">Registrar número</a>
     </div>
   {% endif %}
+
 {% endblock %}
 
-  
 </body>
 </html>
